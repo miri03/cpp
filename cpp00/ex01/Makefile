@@ -1,10 +1,10 @@
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = megaphone
+NAME = phonebook
 
 RM = rm -rf
 
-CFILE = megaphone.cpp
+CFILE = main.cpp
 
 OFILE = ${CFILE:.cpp=.o}
 
