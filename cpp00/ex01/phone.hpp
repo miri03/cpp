@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:34:01 by meharit           #+#    #+#             */
-/*   Updated: 2023/08/16 17:30:06 by meharit          ###   ########.fr       */
+/*   Updated: 2023/08/16 19:43:23 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include <iostream>
 # include <cctype>
 
+int	valid_name(std::string input);
+int	valid_number(std::string input);
+
 class PhoneBook{
 	
 	Contact contact[8];
@@ -26,30 +29,42 @@ class PhoneBook{
 		void	set_contact(int i)
 		{
 			std::string input;
-			
-			std::cout << "first name : ";
-			std::cin >> input;
-			for (int j = 0; input[j]; j++)
+
+			while (1)
 			{
-				if (!isalpha(input[j])){
-					std::cout << "try another name" << std::endl;
-					return;
-				}
+				std::cout << "first name : ";
+				std::cin >> input;
+				if (valid_name(input))
+					break;
 			}	
 			this->contact[i].set_first_name(input);
 			
 
-			
-			std::cout << "last name : ";
-			std::cin >> input;
+			while (1)
+			{
+				std::cout << "last name : ";
+				std::cin >> input;
+				if (valid_name(input))
+					break;
+			}
 			this->contact[i].set_last_name(input);
 
-			std::cout << "nickname : ";
-			std::cin >> input;
+			while (1)
+			{
+				std::cout << "nickname : ";
+				std::cin >> input;
+				if (valid_name(input))
+					break;
+			}
 			this->contact[i].set_nickname(input);
 
-			std::cout << "phonenumber : ";
-			std::cin >> input;
+			while (1)
+			{
+				std::cout << "phonenumber : ";
+				std::cin >> input;
+				if (valid_number(input))
+					break;
+			}
 			this->contact[i].set_phonenumber(input);
 
 			std::cout << "secret : ";

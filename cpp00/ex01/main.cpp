@@ -6,10 +6,9 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 02:07:50 by meharit           #+#    #+#             */
-/*   Updated: 2023/08/16 16:51:41 by meharit          ###   ########.fr       */
+/*   Updated: 2023/08/16 21:34:31 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "phone.hpp"
 
@@ -20,7 +19,7 @@ int main()
 	std::string input;
 	while (1)
 	{
-		std::cout << "Please choose ADD, SEARCH or EXIT to quit the program :)" << std::endl;
+		std::cout << "--Please choose ADD, SEARCH or EXIT to quit the program :) --" << std::endl;
 		std::cin >> input;
 		if (input == "ADD")
 		{
@@ -30,9 +29,17 @@ int main()
 		}
 		else if (input == "SEARCH")
 		{
-			std::cout << "your contact" << std::endl;
-			for (int j = 0; j < i; j++)
-				search (pb, j);
+			if (i == 0)
+				std::cout << "**Your contact is empty try the command ADD to save a new contact**" << std::endl;
+			else
+			{
+				std::cout << "your contact" << std::endl;
+				std::cout << "+==========+==========+==========+==========+" << std::endl;
+				std::cout << "| Index    |First name| Last name| Nickname |" << std::endl;
+				for (int j = 0; j < i; j++)
+					search (pb, j);
+				std::cout << "+==========+==========+==========+==========+" << std::endl;
+			}
 		}
 		else if (input == "EXIT")
 		{

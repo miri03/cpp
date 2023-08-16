@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 16:14:40 by meharit           #+#    #+#             */
-/*   Updated: 2023/08/16 16:46:52 by meharit          ###   ########.fr       */
+/*   Updated: 2023/08/16 20:11:51 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ class Contact {
 		
 		void	set_index(int _index)
 		{
-			index = _index;
+			index = _index + 1;
 		}
 		int	get_index()
 		{
