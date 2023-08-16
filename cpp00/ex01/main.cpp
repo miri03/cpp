@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 02:07:50 by meharit           #+#    #+#             */
-/*   Updated: 2023/08/15 19:57:45 by meharit          ###   ########.fr       */
+/*   Updated: 2023/08/16 16:51:41 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,49 +20,25 @@ int main()
 	std::string input;
 	while (1)
 	{
+		std::cout << "Please choose ADD, SEARCH or EXIT to quit the program :)" << std::endl;
 		std::cin >> input;
 		if (input == "ADD")
 		{
-			// add(pb, i);
-			
-			std::cout << "new contact" << std::endl;
-			std::cout << "first name => ";
-			std::cin >> input;
-			pb.contact[i].set_first_name(input);
-
-			
-			std::cout << "last name => ";
-			std::cin >> input;
-			pb.contact[i].set_last_name(input);
-			
-			
-			std::cout << "nickname => ";
-			std::cin >> input;
-			pb.contact[i].set_nickname(input);
-			
-			
-			std::cout << "phone number=> ";
-			std::cin >> input;
-			pb.contact[i].set_phonenumber(input);
-
-			
-			std::cout << "secret => ";
-			std::cin >> input;
-			pb.contact[i].set_secret(input);
-
-			pb.contact[i].set_index(i+1);
-
-			
-			i++;
+			std::cout << "NEW CONTACT" << std::endl;	
+			pb.set_contact(i);
+			i++;			
 		}
 		else if (input == "SEARCH")
 		{
 			std::cout << "your contact" << std::endl;
-			
 			for (int j = 0; j < i; j++)
 				search (pb, j);
 		}
 		else if (input == "EXIT")
+		{
+			std::cout << "Your contacts are lost forever :(" << std::endl;
 			return (0);
+		}
+			
 	}	
 }

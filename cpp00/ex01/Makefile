@@ -4,7 +4,7 @@ NAME = phonebook
 
 RM = rm -rf
 
-CFILE = main.cpp search.cpp add.cpp
+CFILE = main.cpp search.cpp
 
 OFILE = ${CFILE:.cpp=.o}
 
