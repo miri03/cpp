@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:34:01 by meharit           #+#    #+#             */
-/*   Updated: 2023/08/16 19:43:23 by meharit          ###   ########.fr       */
+/*   Updated: 2023/08/17 17:50:01 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # include <iostream>
 # include <cctype>
+#include <cstdlib>
 
 int	valid_name(std::string input);
 int	valid_number(std::string input);
@@ -34,6 +35,8 @@ class PhoneBook{
 			{
 				std::cout << "first name : ";
 				std::cin >> input;
+				if (std::cin.eof())
+					exit(0);
 				if (valid_name(input))
 					break;
 			}	
@@ -44,6 +47,8 @@ class PhoneBook{
 			{
 				std::cout << "last name : ";
 				std::cin >> input;
+				if (std::cin.eof())
+					exit(0);
 				if (valid_name(input))
 					break;
 			}
@@ -53,6 +58,8 @@ class PhoneBook{
 			{
 				std::cout << "nickname : ";
 				std::cin >> input;
+				if (std::cin.eof())
+					exit(0);
 				if (valid_name(input))
 					break;
 			}
@@ -62,6 +69,8 @@ class PhoneBook{
 			{
 				std::cout << "phonenumber : ";
 				std::cin >> input;
+				if (std::cin.eof())
+					exit(0);
 				if (valid_number(input))
 					break;
 			}
@@ -69,6 +78,8 @@ class PhoneBook{
 
 			std::cout << "secret : ";
 			std::cin >> input;
+			if (std::cin.eof())
+				exit(0);
 			this->contact[i].set_secret(input);
 			
 			this->contact[i].set_index(i);

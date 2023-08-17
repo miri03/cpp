@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/16 19:50:15 by meharit           #+#    #+#             */
-/*   Updated: 2023/08/16 19:50:30 by meharit          ###   ########.fr       */
+/*   Updated: 2023/08/17 17:30:21 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	valid_number(std::string input)
 			return(0);
 		}
 	}
-	if (input.size() < 10)
+	if (input.size() < 10 || input.size() > 10)
 	{
 		std::cout << "Phone number should be 10 digits long; try another one" << std::endl;
 		return (0);

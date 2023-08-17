@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 02:07:50 by meharit           #+#    #+#             */
-/*   Updated: 2023/08/16 21:34:31 by meharit          ###   ########.fr       */
+/*   Updated: 2023/08/17 17:54:37 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int main()
 	{
 		std::cout << "--Please choose ADD, SEARCH or EXIT to quit the program :) --" << std::endl;
 		std::cin >> input;
+		if (std::cin.eof())
+			return (0);
 		if (input == "ADD")
 		{
 			std::cout << "NEW CONTACT" << std::endl;	
@@ -39,6 +41,8 @@ int main()
 				for (int j = 0; j < i; j++)
 					search (pb, j);
 				std::cout << "+==========+==========+==========+==========+" << std::endl;
+				std::cout << "--Which contact you want to display (choose the index)--" << std::endl;
+				
 			}
 		}
 		else if (input == "EXIT")
