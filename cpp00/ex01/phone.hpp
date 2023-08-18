@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:34:01 by meharit           #+#    #+#             */
-/*   Updated: 2023/08/18 16:01:04 by meharit          ###   ########.fr       */
+/*   Updated: 2023/08/18 21:10:22 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ class PhoneBook{
 				std::cin >> input;
 				if (std::cin.eof())
 					exit(0);
-				// if (input.empty())
-				// 	std::cout << "empty";
 				if (valid_name(input))
 					break;
 			}	

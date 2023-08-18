@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 02:07:50 by meharit           #+#    #+#             */
-/*   Updated: 2023/08/18 16:20:45 by meharit          ###   ########.fr       */
+/*   Updated: 2023/08/18 21:24:04 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int main()
 {
 	PhoneBook pb;
 	int i = 0;
+	int old = 0; // ?
 	std::string input;
 	while (1)
 	{
@@ -60,10 +61,24 @@ int main()
 			return (0);
 		if (input == "ADD")
 		{
-			std::cout << "NEW CONTACT" << std::endl;	
-			pb.set_contact(i);
-			i++;		
-			pb.set_count(i);
+			std::cout << "NEW CONTACT" << std::endl;
+			if (i == 8)
+			{
+				std::cout << "switch";
+				pb.set_contact(old);
+				if (old == 8)
+					old = 0;   // ?
+				old++;
+				exit (0);
+			}
+			
+			else
+			{
+				pb.set_contact(i);
+				i++;		
+				pb.set_count(i);
+			}
+			
 		}
 		else if (input == "SEARCH")
 		{

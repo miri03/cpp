@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:35:48 by meharit           #+#    #+#             */
-/*   Updated: 2023/08/18 15:02:09 by meharit          ###   ########.fr       */
+/*   Updated: 2023/08/18 21:00:26 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void search(PhoneBook pb, int j)
 	if ((pb.gt_first_name(j)).size() > 10)
 		std::cout << str.substr(0,9) << "." << "|";
 	else
-		std::cout << std::setw(10) << pb.gt_first_name(j)<< "|";
+		std::cout << std::setw(10) << pb.gt_first_name(j) << "|";
 
 /******************************************/	
 	str = pb.gt_last_name(j);
@@ -37,7 +37,7 @@ void search(PhoneBook pb, int j)
 	str = pb.gt_nickname(j);
 
 	if ((pb.gt_nickname(j)).size() > 10)
-		std::cout << str.substr(0,9) << "." << "|";
+		std::cout << str.substr(0,9) << "." << "|" << std::endl;
 	else
 		std::cout << std::setw(10) << pb.gt_nickname(j) << "|" << std::endl;
 /******************************************/
