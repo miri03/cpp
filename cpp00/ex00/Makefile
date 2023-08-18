@@ -8,7 +8,7 @@ CFILE = megaphone.cpp
 
 OFILE = ${CFILE:.cpp=.o}
 
-CC = clang++
+CC = c++
 
 all : $(NAME)
 
