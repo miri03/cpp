@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 02:07:50 by meharit           #+#    #+#             */
-/*   Updated: 2023/08/17 17:54:37 by meharit          ###   ########.fr       */
+/*   Updated: 2023/08/18 01:10:37 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int main()
 		{
 			std::cout << "Your contacts are lost forever :(" << std::endl;
 			return (0);
-		}
-			
+		}	
 	}	
 }

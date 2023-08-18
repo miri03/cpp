@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:34:01 by meharit           #+#    #+#             */
-/*   Updated: 2023/08/17 17:50:01 by meharit          ###   ########.fr       */
+/*   Updated: 2023/08/18 01:03:04 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <iostream>
 # include <cctype>
 #include <cstdlib>
+#include <iomanip>
+#include <string>
 
 int	valid_name(std::string input);
 int	valid_number(std::string input);
@@ -37,6 +39,8 @@ class PhoneBook{
 				std::cin >> input;
 				if (std::cin.eof())
 					exit(0);
+				// if (input.empty())
+				// 	std::cout << "empty";
 				if (valid_name(input))
 					break;
 			}	
