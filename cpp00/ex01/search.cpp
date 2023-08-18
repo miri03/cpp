@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:35:48 by meharit           #+#    #+#             */
-/*   Updated: 2023/08/18 01:08:22 by meharit          ###   ########.fr       */
+/*   Updated: 2023/08/18 15:02:09 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void search(PhoneBook pb, int j)
 	else
 		std::cout << std::setw(10) << pb.gt_first_name(j)<< "|";
 
-		
 /******************************************/	
 	str = pb.gt_last_name(j);
 
@@ -41,26 +40,6 @@ void search(PhoneBook pb, int j)
 		std::cout << str.substr(0,9) << "." << "|";
 	else
 		std::cout << std::setw(10) << pb.gt_nickname(j) << "|" << std::endl;
-/******************************************/
-	// str = pb.gt_phonenumber(j);
-	// if ((pb.gt_phonenumber(j)).size() > 10)
-	// {
-	// 	for (int i = 0; i < 9; i++)
-	// 		std::cout << str[i];
-	// 	std::cout << "." << "|";
-	// }
-	// else
-	// 	std::cout << pb.gt_phonenumber(j) << "|";	
-/******************************************/
-	// str = pb.gt_secret(j);
-	// if ((pb.gt_secret(j)).size() > 10)
-	// {
-	// 	for (int i = 0; i < 9; i++)
-	// 		std::cout << str[i];
-	// 	std::cout << "." << "|";
-	// }
-	// else
-	// 	std::cout << pb.gt_secret(j) << "|";	
 /******************************************/
 
 }

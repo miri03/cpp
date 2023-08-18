@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:34:01 by meharit           #+#    #+#             */
-/*   Updated: 2023/08/18 01:03:04 by meharit          ###   ########.fr       */
+/*   Updated: 2023/08/18 16:01:04 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,25 @@
 #include <string>
 
 int	valid_name(std::string input);
-int	valid_number(std::string input);
+int	valid_number(std::string input, int i);
 
 class PhoneBook{
 	
 	Contact contact[8];
+	int count;
 		
 	public:
+		
+		void set_count(int i)
+		{
+			count = i;
+		}
+		
+		int	get_count()
+		{
+			return (count);
+		}
+
 		void	set_contact(int i)
 		{
 			std::string input;
@@ -75,7 +87,7 @@ class PhoneBook{
 				std::cin >> input;
 				if (std::cin.eof())
 					exit(0);
-				if (valid_number(input))
+				if (valid_number(input, 1))
 					break;
 			}
 			this->contact[i].set_phonenumber(input);

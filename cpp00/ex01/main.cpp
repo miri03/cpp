@@ -6,11 +6,46 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 02:07:50 by meharit           #+#    #+#             */
-/*   Updated: 2023/08/18 01:10:37 by meharit          ###   ########.fr       */
+/*   Updated: 2023/08/18 16:20:45 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phone.hpp"
+
+void	display_contact(PhoneBook pb)
+{
+	std::string input;
+	
+	std::cout << "--Which contact you want to display (choose the index)--" << std::endl;
+	while (1)
+	{
+		std::cout << "Index -> ";
+		std::cin >> input;
+		if (std::cin.eof())
+			exit (0);
+		if (valid_number(input, 0))
+		{
+			const char *str = input.c_str();
+			int index = atoi(str);
+			if (index < 1 || index > 8)
+				std::cout << "Only digits beetwen 1 and 8" << std::endl;
+			else if (index > pb.get_count())
+				std::cout << "No countact in this index; try another one !" << std::endl;
+			else if ((index > 1 || index < 8) && index <= pb.get_count())
+			{
+				std::cout << "**Dispaly contact " << index << std::endl;
+				std::cout << "first name -> " << pb.gt_first_name(index - 1) << std::endl;
+				std::cout << "last name -> " << pb.gt_last_name(index - 1) << std::endl;
+				std::cout << "nickname -> " << pb.gt_nickname(index - 1) << std::endl;
+				std::cout << "phone number -> " << pb.gt_phonenumber(index - 1) << std::endl;
+				std::cout << "secret -> " << pb.gt_secret(index - 1) << std::endl;
+				
+				break;		
+			}
+		}
+	}
+		
+}
 
 int main()
 {
@@ -27,7 +62,8 @@ int main()
 		{
 			std::cout << "NEW CONTACT" << std::endl;	
 			pb.set_contact(i);
-			i++;			
+			i++;		
+			pb.set_count(i);
 		}
 		else if (input == "SEARCH")
 		{
@@ -41,8 +77,7 @@ int main()
 				for (int j = 0; j < i; j++)
 					search (pb, j);
 				std::cout << "+==========+==========+==========+==========+" << std::endl;
-				std::cout << "--Which contact you want to display (choose the index)--" << std::endl;
-				
+				display_contact(pb);
 			}
 		}
 		else if (input == "EXIT")

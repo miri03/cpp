@@ -8,7 +8,7 @@ CFILE = main.cpp search.cpp utis.cpp
 
 OFILE = ${CFILE:.cpp=.o}
 
-CC = clang++
+CC = c++
 
 all : $(NAME)
 
