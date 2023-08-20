@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 02:07:50 by meharit           #+#    #+#             */
-/*   Updated: 2023/08/18 21:24:04 by meharit          ###   ########.fr       */
+/*   Updated: 2023/08/20 17:50:50 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@ void	display_contact(PhoneBook pb)
 	while (1)
 	{
 		std::cout << "Index -> ";
-		std::cin >> input;
+		getline(std::cin, input, '\n');
 		if (std::cin.eof())
 			exit (0);
-		if (valid_number(input, 0))
+		if (!input.empty() && valid_number(input, 0))
 		{
-			const char *str = input.c_str();
-			int index = atoi(str);
-			if (index < 1 || index > 8)
+			int index = atoi(input.c_str());
+			if (input.size() > 1)
+				std::cout << "Only digits beetwen 1 and 8" << std::endl;
+			else if (index < 1 || index > 8)
 				std::cout << "Only digits beetwen 1 and 8" << std::endl;
 			else if (index > pb.get_count())
 				std::cout << "No countact in this index; try another one !" << std::endl;
@@ -44,41 +45,44 @@ void	display_contact(PhoneBook pb)
 			}
 		}
 	}
-		
 }
 
 int main()
 {
 	PhoneBook pb;
 	int i = 0;
-	int old = 0; // ?
+	int old = 0;
 	std::string input;
 	while (1)
 	{
 		std::cout << "--Please choose ADD, SEARCH or EXIT to quit the program :) --" << std::endl;
-		std::cin >> input;
-		if (std::cin.eof())
-			return (0);
+		while (1)
+		{ 
+			getline(std::cin, input, '\n');
+			if (std::cin.eof())
+				return (0);
+			if (input.empty())
+				std::cout << "--Please choose ADD, SEARCH or EXIT to quit the program :) --" << std::endl;
+			else
+				break;
+		}		
 		if (input == "ADD")
 		{
 			std::cout << "NEW CONTACT" << std::endl;
 			if (i == 8)
 			{
-				std::cout << "switch";
 				pb.set_contact(old);
-				if (old == 8)
-					old = 0;   // ?
-				old++;
-				exit (0);
+				if (old == 7)
+					old = 0; 
+				else
+					old++;
 			}
-			
 			else
 			{
 				pb.set_contact(i);
 				i++;		
 				pb.set_count(i);
 			}
-			
 		}
 		else if (input == "SEARCH")
 		{

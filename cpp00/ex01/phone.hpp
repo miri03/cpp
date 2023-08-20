@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/15 19:34:01 by meharit           #+#    #+#             */
-/*   Updated: 2023/08/18 21:10:22 by meharit          ###   ########.fr       */
+/*   Updated: 2023/08/19 19:25:33 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,114 +17,31 @@
 
 # include <iostream>
 # include <cctype>
-#include <cstdlib>
-#include <iomanip>
-#include <string>
+# include <cstdlib>
+# include <iomanip>
+# include <string>
 
-int	valid_name(std::string input);
-int	valid_number(std::string input, int i);
-
-class PhoneBook{
+class PhoneBook	{
+	private:
 	
-	Contact contact[8];
-	int count;
+		Contact contact[8];
+		int count;
 		
 	public:
 		
-		void set_count(int i)
-		{
-			count = i;
-		}
-		
-		int	get_count()
-		{
-			return (count);
-		}
-
-		void	set_contact(int i)
-		{
-			std::string input;
-
-			while (1)
-			{
-				std::cout << "first name : ";
-				std::cin >> input;
-				if (std::cin.eof())
-					exit(0);
-				if (valid_name(input))
-					break;
-			}	
-			this->contact[i].set_first_name(input);
-			
-
-			while (1)
-			{
-				std::cout << "last name : ";
-				std::cin >> input;
-				if (std::cin.eof())
-					exit(0);
-				if (valid_name(input))
-					break;
-			}
-			this->contact[i].set_last_name(input);
-
-			while (1)
-			{
-				std::cout << "nickname : ";
-				std::cin >> input;
-				if (std::cin.eof())
-					exit(0);
-				if (valid_name(input))
-					break;
-			}
-			this->contact[i].set_nickname(input);
-
-			while (1)
-			{
-				std::cout << "phonenumber : ";
-				std::cin >> input;
-				if (std::cin.eof())
-					exit(0);
-				if (valid_number(input, 1))
-					break;
-			}
-			this->contact[i].set_phonenumber(input);
-
-			std::cout << "secret : ";
-			std::cin >> input;
-			if (std::cin.eof())
-				exit(0);
-			this->contact[i].set_secret(input);
-			
-			this->contact[i].set_index(i);
-		}
-		
-		std::string gt_first_name(int i)
-		{
-			return this->contact[i].get_first_name();
-		}
-		std::string gt_last_name(int i)
-		{
-			return this->contact[i].get_last_name();
-		}
-		std::string gt_nickname(int i)
-		{
-			return this->contact[i].get_nickname();
-		}
-		std::string gt_phonenumber(int i)
-		{
-			return this->contact[i].get_phonenumber();
-		}
-		std::string gt_secret(int i)
-		{
-			return this->contact[i].get_secret();
-		}
-		int gt_index(int i)
-		{
-			return this->contact[i].get_index();
-		}
+		void		set_count(int i);
+		void		set_contact(int i);
+		std::string gt_first_name(int i);
+		std::string gt_last_name(int i);
+		std::string gt_nickname(int i);
+		std::string gt_phonenumber(int i);
+		std::string gt_secret(int i);
+		int			get_count();
+		int 		gt_index(int i);
 };
 
 void	search(PhoneBook pb, int j);
+int		valid_name(std::string input);
+int		valid_number(std::string input, int i);
 
 #endif
