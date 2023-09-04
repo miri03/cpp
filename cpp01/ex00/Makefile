@@ -4,13 +4,16 @@ NAME = zombie
 
 RM = rm -rf
 
-CFILE = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
-
-OFILE = ${CFILE:.cpp=.o}
+CFILE = $(wildcard *.cpp)
 
 CC = c++
 
+OFILE = ${CFILE:.cpp=.o}
+
 all : $(NAME)
+
+%.o : %.cpp
+	$(CC) $(CFLAGS) -c $<
 
 $(NAME) : $(OFILE)
 	$(CC) $(CFLAGS) $(OFILE) -o $(NAME)

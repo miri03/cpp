@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 16:51:51 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/03 21:44:15 by meharit          ###   ########.fr       */
+/*   Updated: 2023/09/04 14:27:38 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class Zombie
 		void 		announce(void);
 		std::string	get_name(void);
 		Zombie(std::string _name);
+		~Zombie();
 };
 
 Zombie*	newZombie( std::string name );
