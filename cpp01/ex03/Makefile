@@ -1,6 +1,6 @@
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = violence
+NAME = Weapon
 
 RM = rm -rf
 
