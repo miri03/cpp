@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 22:10:33 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/08 15:17:37 by meharit          ###   ########.fr       */
+/*   Created: 2023/09/08 16:07:00 by meharit           #+#    #+#             */
+/*   Updated: 2023/09/08 16:43:26 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Harl.hpp"
+#include "Harl.hpp"
 
 void	Harl::debug(void)
 {
@@ -34,17 +34,30 @@ void	Harl::error(void)
 
 void	Harl::complain(std::string level)
 {
-	void	(Harl::*karen[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-	
+	int i = 0;
 	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	
-	for (int j = 0; j < 4; j++)
+	while (level != levels[i])
+		i++;
+	i++;
+	switch(i)
 	{
-		if (levels[j] == level)
-		{
-			(this->*karen[j])();
-			return;
-		}
+		case 1:
+			debug();
+			break;
+			
+		case 2:
+			info();
+			break;
+			
+		case 3:
+			warning();
+			break;
+			
+		case 4:
+			error;
+			break;
+			
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	}
-	std::cout << "Harl is talking nonsense" << std::endl;
 }
