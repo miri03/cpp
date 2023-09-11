@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 14:29:34 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/10 16:43:52 by meharit          ###   ########.fr       */
+/*   Updated: 2023/09/11 15:59:11 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,22 @@ int main(int argc, char **argv)
 		int				find = -len;
 		
 		ifs.open(argv[1], std::ifstream::in);
+		if (!ifs)
+		{
+			perror("original file");
+			exit (1);
+		}
 		ofs.open("new.replace", std::ofstream::out);
+		if (!ofs)
+		{
+			perror("replace file");
+			exit (1);
+		}	
 		getline(ifs, buff, '\0');
 		int i = 0;
 		while (1)
 		{
 			find = buff.find(argv[2], find + len);
-			std::cout << find << std::endl;
 			if (find == -1 || strlen(argv[2])== 0)
 				break;
 			buff.insert(find, argv[3]);
