@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
+/*   By: meryemharit <meryemharit@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/10 14:29:34 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/11 15:59:11 by meharit          ###   ########.fr       */
+/*   Updated: 2023/09/11 17:12:23 by meryemharit      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "replace.hpp"
+
+void	open_files(std::ifstream &ifs, std::ofstream &ofs, char *filename)
+{
+	std::string	new_f;
+	ifs.open(filename, std::ifstream::in);
+	if (!ifs)
+	{
+		perror("original file");
+		exit (1);
+	}
+	////////////////////////////////
+	new_f.append(filename);
+	new_f.append(".replace", 0, 8);
+	////////////////////////////////
+	ofs.open(new_f , std::ofstream::out);
+	if (!ofs)
+	{
+		perror("replace file");
+		exit (1);
+	}
+}
 
 int main(int argc, char **argv)
 {
@@ -22,20 +43,8 @@ int main(int argc, char **argv)
 		int				len = strlen(argv[3]);
 		int				find = -len;
 		
-		ifs.open(argv[1], std::ifstream::in);
-		if (!ifs)
-		{
-			perror("original file");
-			exit (1);
-		}
-		ofs.open("new.replace", std::ofstream::out);
-		if (!ofs)
-		{
-			perror("replace file");
-			exit (1);
-		}	
+		open_files(ifs, ofs, argv[1]);	
 		getline(ifs, buff, '\0');
-		int i = 0;
 		while (1)
 		{
 			find = buff.find(argv[2], find + len);
@@ -43,7 +52,6 @@ int main(int argc, char **argv)
 				break;
 			buff.insert(find, argv[3]);
 			buff.erase(find + len, strlen(argv[2]));
-			i++;
 		}
 		ofs << buff;
 		ifs.close();
