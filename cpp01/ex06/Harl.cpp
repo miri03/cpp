@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 16:07:00 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/08 16:43:26 by meharit          ###   ########.fr       */
+/*   Updated: 2023/09/14 17:22:07 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,25 @@
 
 void	Harl::debug(void)
 {
+	std::cout << "[ DEBUG ]" << std::endl;
 	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do!" << std::endl;
 }
 
 void	Harl::info(void)
 {
+	std::cout << "[ INFO ]" << std::endl;
 	std::cout << "I cannot believe adding extra bacon costs more money. You didn't put enough bacon in my burger! If you did, I would't be asking for more!" << std::endl;
 }
 
 void	Harl::warning(void)
 {
+	std::cout << "[ WARNING ]" << std::endl;
 	std::cout << "I think I deserve to have some extra bacon for free. I've been coming for years whereas you started working here since last month." << std::endl;
 }
 
 void	Harl::error(void)
 {
+	std::cout << "[ ERROR ]" << std::endl;
 	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
@@ -43,18 +47,18 @@ void	Harl::complain(std::string level)
 	{
 		case 1:
 			debug();
-			break;
+			//fallthrough
 			
 		case 2:
 			info();
-			break;
+			//fallthrough
 			
 		case 3:
 			warning();
-			break;
+			//fallthrough
 			
 		case 4:
-			error;
+			error();
 			break;
 			
 		default:

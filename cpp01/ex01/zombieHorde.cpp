@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:23:06 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/10 19:57:53 by meharit          ###   ########.fr       */
+/*   Updated: 2023/09/15 17:45:18 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Zombie* zombieHorde( int N, std::string name )
 		Zombie* zombieHorde = new Zombie[N];
 		for(int i = 0; i < N; i++)
 			zombieHorde[i].set_name(name);
-			return (zombieHorde);
+		return (zombieHorde);
 	}
 	else
 	{

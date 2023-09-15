@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:15:49 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/10 19:34:51 by meharit          ###   ########.fr       */
+/*   Updated: 2023/09/15 17:46:13 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ZOMBIE_HPP
 
 # include <iostream>
+# include <cstdlib>
 
 class Zombie
 {
