@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:04:56 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/21 18:32:48 by meharit          ###   ########.fr       */
+/*   Updated: 2023/09/21 21:08:19 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,18 @@ Fixed::Fixed()
 	std::cout << "Default constructor called" << std::endl;
 }
 
+Fixed::Fixed(const int nb)
+{
+	
+}
+
+Fixed::Fixed(const float nb)
+{}
+
 Fixed::Fixed(const Fixed& og)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	value = og.getRawBits(); //?
-	
 }
 
 Fixed& Fixed::operator=(const Fixed& og)

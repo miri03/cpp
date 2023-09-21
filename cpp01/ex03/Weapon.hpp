@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 21:47:24 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/05 21:39:28 by meharit          ###   ########.fr       */
+/*   Updated: 2023/09/21 14:52:18 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ class Weapon
 	public:
 		Weapon(std::string type);
 		Weapon();
-		void				setType(std::string _new);
+		void			setType(std::string _new);
 		const std::string&	getType (void);
-		
 };
 
 #endif

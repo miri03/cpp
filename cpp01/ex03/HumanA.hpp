@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:10:16 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/10 20:09:12 by meharit          ###   ########.fr       */
+/*   Updated: 2023/09/15 22:05:32 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 class HumanA
 {
 	private:
+		Weapon&		weapon;
 		std::string	name;
-		Weapon& weapon;
 		
 	public:
 		void	attack();

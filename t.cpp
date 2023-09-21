@@ -5,35 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 20:32:23 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/05 20:41:29 by meharit          ###   ########.fr       */
+/*   Created: 2023/09/21 19:19:31 by meharit           #+#    #+#             */
+/*   Updated: 2023/09/21 21:32:18 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-class A	{
-	private:
-		int _i;
-	public:
-		A(int i): _i(i) {}
-		int getI()	{
-			return(_i);
-		}
-		A(const A & orig)	{
-			std::cout << "copy" << std::endl;
-			*this = orig;
-		}
-		~A()	{std::cout << "destructor called" << std::endl;}
-};
+int	main()	{
+	float f = 3.5f;
 
-void	test(A b)	{
-	std::cout << b.getI() << std::endl;
+	std::cout << *reinterpret_cast<int*>(&f) << std::endl;
 }
 
-int main()	{
-	A l(5);
-	
-	test(l);
-}
- /*test(b(l)) */
+/*
+3.14f
+0000001.100100011110101110001 2^1
+
+00000000 00000000 00000000 00000000
+*/

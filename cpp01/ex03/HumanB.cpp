@@ -6,11 +6,17 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 16:09:07 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/05 20:30:49 by meharit          ###   ########.fr       */
+/*   Updated: 2023/09/17 14:48:11 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
+
+HumanB::HumanB(std::string _name)
+{
+	weapon = NULL;
+	name = _name;
+}
 
 std::string HumanB::get_name()
 {
@@ -30,10 +36,4 @@ void	HumanB::attack()
 void HumanB::setWeapon(Weapon &_weapon)
 {
 	weapon = &_weapon;
-}
-
-HumanB::HumanB(std::string _name)
-{
-	weapon = NULL;
-	name = _name;
 }
