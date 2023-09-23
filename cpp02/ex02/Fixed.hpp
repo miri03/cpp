@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:04:59 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/23 17:50:19 by meharit          ###   ########.fr       */
+/*   Updated: 2023/09/23 20:02:18 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Fixed
 	public:
 		Fixed();
 		Fixed(const Fixed& copy);
-		Fixed& operator=(const Fixed& op);
+		Fixed& operator=(const Fixed& og);
 		~Fixed();
 		
 		Fixed(const int nb);
@@ -35,6 +35,8 @@ class Fixed
 		int		toInt( void ) const;
 		
 		int		getRawBits( void ) const;
+
+		bool	operator==(const Fixed& obj);
 	
 };
 
