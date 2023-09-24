@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:04:59 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/23 20:02:18 by meharit          ###   ########.fr       */
+/*   Updated: 2023/09/25 00:41:17 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,27 @@ class Fixed
 		
 		int		getRawBits( void ) const;
 
+		bool	operator>(const Fixed& obj);
+		bool	operator<(const Fixed& obj);
+		bool	operator>=(const Fixed& obj);
+		bool	operator<=(const Fixed& obj);
 		bool	operator==(const Fixed& obj);
-	
+		bool	operator!=(const Fixed& obj);
+
+		Fixed	operator+(const Fixed& obj);
+		Fixed	operator-(const Fixed& obj);
+		Fixed	operator*(const Fixed& obj);
+		Fixed	operator/(const Fixed& obj);
+
+		Fixed&		operator++();
+		float		operator++(int);
+		Fixed&		operator--();
+		float		operator--(int);
+
+		static Fixed& min(Fixed& a, Fixed& b);
+		const static Fixed& min(const Fixed& a, const Fixed& b);
+		static Fixed& max(Fixed& a, Fixed& b);
+		const static Fixed& max(const Fixed& a, const Fixed& b);
 };
 
 std::ostream&	operator<<(std::ostream& os, Fixed& cl);
