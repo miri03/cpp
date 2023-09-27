@@ -5,33 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: meryemharit <meryemharit@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/23 19:40:56 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/27 15:38:56 by meryemharit      ###   ########.fr       */
+/*   Created: 2023/09/27 15:54:30 by meryemharit       #+#    #+#             */
+/*   Updated: 2023/09/27 19:45:47 by meryemharit      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "Point.hpp"
 
-int main( void ) {
-	
-	Fixed a(0.5f);
-	Fixed d(2.5f);
-	Fixed e(0);
-	
-	// Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	
-	// std::cout << a + d << std::endl;
-	std::cout << a << std::endl;
-	// std::cout << a * d << std::endl;
-	// std::cout << e << std::endl;
-	// std::cout << e++ << std::endl;
-	// std::cout << e << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	
-	// std::cout << Fixed::max(a, e) << std::endl;
-
-	// std::cout << Fixed::max( a, b ) << std::endl;
-	
-	return 0;
+int main()
+{
+    Point a(-2,1);
+    Point b(1,5);
+    Point c(3,2);
+    Point p;
+    
+    bsp(a, b , c, p);
 }

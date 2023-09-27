@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
+/*   By: meryemharit <meryemharit@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:04:56 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/23 17:50:21 by meharit          ###   ########.fr       */
+/*   Updated: 2023/09/27 15:36:50 by meryemharit      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,11 @@ std::ostream&	operator<<(std::ostream& os, const Fixed& cl)
 {
 	os << cl.toFloat();
 	return (os);
+}
+
+void	Fixed::setRawBits( int const raw )
+{
+	value = raw;
 }
 
 int		Fixed::getRawBits( void ) const

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
+/*   By: meryemharit <meryemharit@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:04:59 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/23 17:50:19 by meharit          ###   ########.fr       */
+/*   Updated: 2023/09/27 15:36:29 by meryemharit      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class Fixed
 		float	toFloat( void ) const;
 		int		toInt( void ) const;
 		
+		void	setRawBits( int const raw );
 		int		getRawBits( void ) const;
 	
 };
