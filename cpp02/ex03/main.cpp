@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meryemharit <meryemharit@student.42.fr>    +#+  +:+       +#+        */
+/*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 15:54:30 by meryemharit       #+#    #+#             */
-/*   Updated: 2023/09/27 19:45:47 by meryemharit      ###   ########.fr       */
+/*   Updated: 2023/09/29 15:02:43 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int main()
 {
-    Point a(-2,1);
-    Point b(1,5);
-    Point c(3,2);
-    Point p;
+    Point a(2.5,0.5);
+    Point b(-2.5,0.5);
+    Point c(0.5,2.5);
+    Point p(1.5,1.5);
     
-    bsp(a, b , c, p);
+    std::cout << bsp(a, b , c, p) << std::endl;
 }

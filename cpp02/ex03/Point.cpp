@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meryemharit <meryemharit@student.42.fr>    +#+  +:+       +#+        */
+/*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 15:50:36 by meryemharit       #+#    #+#             */
-/*   Updated: 2023/09/27 19:45:27 by meryemharit      ###   ########.fr       */
+/*   Created: 2023/09/28 15:16:12 by meharit           #+#    #+#             */
+/*   Updated: 2023/09/28 17:35:56 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,13 @@ Point&  Point::operator=(const Point& og)
 
 Point::~Point(){}
 
-Fixed Point::get_x() const
+Fixed Point::get_x() const  
 {
-    return (x.getRawBits());
+    return (this->x); //why?
 }
 
 Fixed Point::get_y() const
 {
-    return (y.getRawBits());
+	
+    return (this->y);
 }

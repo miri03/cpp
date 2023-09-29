@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meryemharit <meryemharit@student.42.fr>    +#+  +:+       +#+        */
+/*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:04:56 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/27 19:46:15 by meryemharit      ###   ########.fr       */
+/*   Updated: 2023/09/29 15:03:25 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,38 +17,30 @@ const int Fixed::Fract_bits = 8;
 Fixed::Fixed()
 {
 	value = 0;
-	// std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int nb)
 {
-	// std::cout << "Int constructor called" << std::endl;
 	value = roundf(nb * (1 << Fract_bits));
 }
 
 Fixed::Fixed(const float nb)
 {
-	// std::cout << "Float constructor called" << std::endl;
 	value = roundf(nb * (1 << Fract_bits));
 }
 
 Fixed::Fixed(const Fixed& og)
 {
-	// std::cout << "Copy constructor called" << std::endl;
 	*this=og;
 }
 
 Fixed& Fixed::operator=(const Fixed& og)
 {
-	// std::cout << "Copy assignment operator called" << std::endl;
 	value = og.getRawBits();
 	return (*this);
 }
 
-Fixed::~Fixed()
-{
-	// std::cout << "Destructor called" << std::endl;
-}
+Fixed::~Fixed() {}
 
 float	Fixed::toFloat( void ) const
 {
