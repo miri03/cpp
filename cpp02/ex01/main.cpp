@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 18:57:24 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/28 00:02:43 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/03 19:29:31 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int main( void ) {
 
 	a = Fixed( 1234.4321f ); //float constr //copy assignme //destruct
 	// 316015
-	
-	std::cout << c.getRawBits() << std::endl;
 	
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;

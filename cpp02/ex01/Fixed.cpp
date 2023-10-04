@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meryemharit <meryemharit@student.42.fr>    +#+  +:+       +#+        */
+/*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:04:56 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/27 15:36:50 by meryemharit      ###   ########.fr       */
+/*   Updated: 2023/10/03 19:32:40 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ Fixed::Fixed()
 Fixed::Fixed(const int nb)
 {
 	std::cout << "Int constructor called" << std::endl;
-	value = roundf(nb * (1 << Fract_bits));
+	setRawBits(roundf(nb * (1 << Fract_bits)));
 }
 
 Fixed::Fixed(const float nb)
 {
 	std::cout << "Float constructor called" << std::endl;
-	value = roundf(nb * (1 << Fract_bits));
+	setRawBits(roundf(nb * (1 << Fract_bits)));
 }
 
 Fixed::Fixed(const Fixed& og)
@@ -41,7 +41,7 @@ Fixed::Fixed(const Fixed& og)
 Fixed& Fixed::operator=(const Fixed& og)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
-	value = og.getRawBits();
+	setRawBits(og.getRawBits());
 	return (*this);
 }
 

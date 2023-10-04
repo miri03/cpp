@@ -6,18 +6,13 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:04:56 by meharit           #+#    #+#             */
-/*   Updated: 2023/09/29 15:03:25 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/04 01:53:13 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 const int Fixed::Fract_bits = 8;
-
-Fixed::Fixed()
-{
-	value = 0;
-}
 
 Fixed::Fixed(const int nb)
 {
@@ -29,6 +24,12 @@ Fixed::Fixed(const float nb)
 	value = roundf(nb * (1 << Fract_bits));
 }
 
+////////---Orthodox Canonical Form ---//////////
+Fixed::Fixed()
+{
+	value = 0;
+}
+
 Fixed::Fixed(const Fixed& og)
 {
 	*this=og;
@@ -36,12 +37,15 @@ Fixed::Fixed(const Fixed& og)
 
 Fixed& Fixed::operator=(const Fixed& og)
 {
-	value = og.getRawBits();
+	setRawBits(og.getRawBits());
 	return (*this);
 }
 
-Fixed::~Fixed() {}
-
+Fixed::~Fixed()
+{
+	
+}
+/////////////////////////////////////////
 float	Fixed::toFloat( void ) const
 {
 	return ((float)value / (1 << Fract_bits));
@@ -51,7 +55,7 @@ int		Fixed::toInt( void ) const
 {
 	return (value / (1 << Fract_bits));
 }
-
+/////////////////////////////////////////
 std::ostream&	operator<<(std::ostream& os, Fixed& cl)
 {
 	os << cl.toFloat();
@@ -63,7 +67,7 @@ std::ostream&	operator<<(std::ostream& os, const Fixed& cl)
 	os << cl.toFloat();
 	return (os);
 }
-
+/////////////////////////////////////////
 void	Fixed::setRawBits( int const raw )
 {
 	value = raw;
@@ -73,47 +77,48 @@ int		Fixed::getRawBits( void ) const
 {
 	return (value);
 }
-
+/////////---comparison operators---///////
 bool	Fixed::operator>(const Fixed& obj)
 {
-	return ((*this).value > obj.value);
+	return (this->getRawBits() > obj.value);
 }
 
 bool	Fixed::operator<(const Fixed& obj)
 {
-	return ((*this).value < obj.value);
+	return (this->getRawBits() < obj.value);
 }
+
 bool	Fixed::operator>=(const Fixed& obj)
 {
-	return ((*this).value >= obj.value);
+	return (this->getRawBits() >= obj.value);
 }
+
 bool	Fixed::operator<=(const Fixed& obj)
 {
-	return ((*this).value <= obj.value);
+	return (this->getRawBits() <= obj.value);
 }
 
 bool	Fixed::operator==(const Fixed& obj)
 {
-	return ((*this).value == obj.value);
+	return (this->getRawBits() == obj.value);
 }
 
 bool	Fixed::operator!=(const Fixed& obj)
 {
-	return ((*this).value != obj.value);
+	return (this->getRawBits() != obj.value);
 }
-
+////////---arithmetic operators---//////////
 Fixed	Fixed::operator+(const Fixed& obj)
 {
 	Fixed tmp;
-	
-	tmp.value = this->value + obj.value;
+	tmp.setRawBits(value + obj.value);
 	return (tmp);
 }
 
 Fixed	Fixed::operator-(const Fixed& obj)
 {
 	Fixed tmp;
-	tmp.value = this->value - obj.value;
+	tmp.setRawBits(value - obj.value);
 	return (tmp);
 }
 
@@ -128,10 +133,10 @@ Fixed	Fixed::operator/(const Fixed& obj)
 	Fixed tmp(this->toFloat() / obj.toFloat());
 	return (tmp);
 }
-
+/////////////////////////////////////////
 Fixed&	Fixed::operator++()
 {
-	this->value = (this->toFloat() + 1) * (1 << 8);
+	this->setRawBits(value + 1);
 	return (*this);
 }
 
@@ -139,13 +144,13 @@ float	Fixed::operator++(int)
 {
 	Fixed tmp(*this);
 
-	this->setRawBits((this->toFloat() + 1) * (1 << 8));
+	this->setRawBits(value + 1);
 	return (tmp.toFloat()); 
 }
 
 Fixed&	Fixed::operator--()
 {
-	this->value = (this->toFloat() - 1) * (1 << 8);
+	this->setRawBits(value - 1);
 	return (*this);
 }
 
@@ -153,10 +158,10 @@ float	Fixed::operator--(int)
 {
 	Fixed tmp(*this);
 
-	this->value = (this->toFloat() - 1) * (1 << 8);
+	this->setRawBits(value - 1);
 	return (tmp.toFloat()); 
 }
-
+/////////////////////////////////////////
 Fixed& Fixed::min(Fixed& a, Fixed& b)
 {
 	if (a.value < b.value)
