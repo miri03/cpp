@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:04:56 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/04 01:53:24 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/05 20:01:30 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@ const int Fixed::Fract_bits = 8;
 
 Fixed::Fixed(const int nb)
 {
-	std::cout << "Int constructor called" << std::endl;
 	value = roundf(nb * (1 << Fract_bits));
 }
 
 Fixed::Fixed(const float nb)
 {
-	std::cout << "Float constructor called" << std::endl;
 	value = roundf(nb * (1 << Fract_bits));
 }
 
@@ -30,25 +28,22 @@ Fixed::Fixed(const float nb)
 Fixed::Fixed()
 {
 	value = 0;
-	std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& og)
 {
-	std::cout << "Copy constructor called" << std::endl;
 	*this=og;
 }
 
 Fixed& Fixed::operator=(const Fixed& og)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
 	setRawBits(og.getRawBits());
 	return (*this);
 }
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+	
 }
 /////////////////////////////////////////
 float	Fixed::toFloat( void ) const

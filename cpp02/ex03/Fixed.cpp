@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:04:56 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/04 01:53:13 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/04 16:58:10 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ float	Fixed::operator++(int)
 	Fixed tmp(*this);
 
 	this->setRawBits(value + 1);
-	return (tmp.toFloat()); 
+	return (tmp.toFloat());
 }
 
 Fixed&	Fixed::operator--()

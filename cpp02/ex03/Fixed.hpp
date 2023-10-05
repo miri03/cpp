@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 18:04:59 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/04 01:37:17 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/05 19:49:44 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,3 @@ std::ostream&	operator<<(std::ostream& os, Fixed& cl);
 std::ostream&	operator<<(std::ostream& os, const Fixed& cl);
 
 #endif
-
-/*
-
-(r / ) | (l * )
- 
-42.42  00101010 . 01101011 10000101 00100000
-
-Fixed point 00101010 01101011
-
-1 << 8
-
-*/

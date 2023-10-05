@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 18:57:24 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/03 19:29:31 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/05 19:46:14 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 int main( void ) {
 	
-	Fixed a;    //default constr
-	Fixed const b( 10 );  //int constr      2560
-	Fixed const c( 8.5f ); //float constr  10860
-	Fixed const d( b );   //copy const
+	Fixed a;
+	Fixed const b( 10 );
+	Fixed const c( 42.42f );
+	Fixed const d( b );
 
-	a = Fixed( 1234.4321f ); //float constr //copy assignme //destruct
-	// 316015
+	a = Fixed( 1234.4321f );
 	
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
