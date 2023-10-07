@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:42:31 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/07 17:35:24 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/07 20:20:29 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,14 @@
 
 int main()
 {
-	ScavTrap p1("jonny");
+	ClapTrap p("Tonny");
+	ScavTrap p1("Jonny");
 
-	// p1.attack("tonny");
+	ScavTrap tt;
 
-	p1.get_info();
-
-	// p1.beRepaired(50);
-
-	// p1.get_info();
-
-	// p1.takeDamage(70);
-
-	// p1.get_info();
-
-	// p1.takeDamage(70);
-
-	// p1.get_info();
-
-	// p1.beRepaired(50);
-	
-	// p1.get_info();
+	p1.attack("someone");
+	p1.takeDamage(100);
+	p.takeDamage(20);
+	p1.guardGate();	
+	p1.takeDamage(1);
 }

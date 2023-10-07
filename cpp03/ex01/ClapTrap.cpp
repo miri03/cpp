@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:42:25 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/07 17:53:13 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/07 18:24:32 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,21 +84,6 @@ void ClapTrap::beRepaired(unsigned int amount)
 	Energy_points -= 1;
 }
 
-void	ClapTrap::set_hit_p(int h_p)
-{
-	Hit_points = h_p;
-}
-
-void	ClapTrap::set_attack_d(int a_d)
-{
-	Attack_damage = a_d;
-}
-
-void	ClapTrap::set_energy_p(int e_p)
-{
-	Energy_points = e_p;
-}
-
 void	ClapTrap::get_info()
 {
 	std::cout << "ClapTrap [" << Name << "] Hit points= (" << Hit_points;
@@ -109,35 +94,3 @@ ClapTrap::~ClapTrap()
 {
 	std::cout << "ClapTrap's destructor called" << std::endl;
 }
-
-
-
-
-
-
-
-
-
-// std::string ClapTrap::get_name()
-// {
-// 	return (Name);
-// }
-
-// int	ClapTrap::get_hit_points()
-// {
-// 	return (Hit_points);
-// }
-
-// int	ClapTrap::get_attack_damage()
-// {
-// 	return (Attack_damage);
-// }
-
-// int	ClapTrap::get_energy_points()
-// {
-// 	return (Energy_points);
-// }
-
-
-
-
