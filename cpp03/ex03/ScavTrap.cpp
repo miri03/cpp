@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 17:33:57 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/09 20:20:18 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/12 18:07:03 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ ScavTrap::ScavTrap(std::string _Name) : ClapTrap(_Name)
 ScavTrap::ScavTrap() : ClapTrap()
 {
 	std::cout << "ScavTrap's Default constructor called" << std::endl;
-	Name = "Unknown";
 	Hit_points = 100;
 	Energy_points = 50;
 	Attack_damage = 20;
@@ -50,11 +49,21 @@ ScavTrap& ScavTrap::operator=(const ScavTrap& og)
 
 void ScavTrap::guardGate()
 {
+	if (Hit_points <= 0)
+	{
+		std::cout << "ScavTrap " << Name << " don't have any hit points left(guardGate)" << std::endl;
+		return;
+	}
 	std::cout << "ScavTrap " << Name << " is now in Gate keeper mode" << std::endl;
 }
 
 void	ScavTrap::attack(const std::string& target)
 {
+	if (Hit_points <= 0)
+	{
+		std::cout << "ScavTrap " << Name << " don't have any hit points left" << std::endl;
+		return;
+	}
 	if (Energy_points == 0)
 	{
 		std::cout << "ScavTrap " << Name << " can't attack, no energy points!!" << std::endl;

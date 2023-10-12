@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:42:28 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/07 18:15:14 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/10 13:54:54 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class ClapTrap{
 		ClapTrap(const ClapTrap& og);
 		ClapTrap& operator=(const ClapTrap& og);
 		~ClapTrap();
+		
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);

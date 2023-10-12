@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:42:31 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/06 17:13:46 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/12 18:01:14 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,19 @@
 int main()
 {
 	ClapTrap p1("jonny");
-	ClapTrap p2("tony");
+	ClapTrap p2;
 
-	p1.attack("tonny");
-
-	p1.get_info();
+	p1.attack("you");
 
 	p1.beRepaired(50);
 
-	p1.get_info();
-
 	p1.takeDamage(70);
 
-	p1.get_info();
-
 	p1.takeDamage(70);
-
-	p1.get_info();
 
 	p1.beRepaired(50);
+
+	p2.attack("someone");
 	
-	p1.get_info();
+
 }

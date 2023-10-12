@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:42:25 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/07 18:24:32 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/12 18:08:21 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 ClapTrap::ClapTrap()
 {
 	std::cout << "ClapTrap's Default constructor called" << std::endl;
+	Name = "Unknown";
+	Hit_points = 10;
+	Energy_points = 10;
+	Attack_damage = 0;
 }
 
 ClapTrap::ClapTrap(std::string _Name)
@@ -47,6 +51,11 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& og)
 
 void ClapTrap::attack(const std::string& target)
 {
+	if (Hit_points <= 0)
+	{
+		std::cout << "ClapTrap " << Name << " don't have any hit points left(attack)" << std::endl;
+		return;
+	}
 	if (Energy_points == 0)
 	{
 		std::cout << "ClapTrap " << Name << " can't attack, no energy points!!" << std::endl;
@@ -61,7 +70,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 {	
 	if (Hit_points <= 0)
 	{
-		std::cout << "ClapTrap " << Name << " don't have any hit points left" << std::endl;
+		std::cout << "ClapTrap " << Name << " don't have any hit points left(take damage)" << std::endl;
 		return;
 	}
 	std::cout << "ClapTrap " << Name <<  " took damage ";
@@ -73,9 +82,14 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
+	if (Hit_points <= 0)
+	{
+		std::cout << "ClapTrap " << Name << " don't have any hit points left(be repaired)" << std::endl;
+		return;
+	}
 	if (Energy_points == 0)
 	{
-		std::cout << "ClapTrap " << Name << " can't attack, no energy points!!" << std::endl;
+		std::cout << "ClapTrap " << Name << " can't be repaired, no energy points!!" << std::endl;
 		return ;
 	}
 	std::cout << "ClapTrap " << Name <<  " got repaired ";

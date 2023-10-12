@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 12:42:28 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/07 18:22:01 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/12 16:09:09 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ class ClapTrap{
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 		
-		void	get_info();
-				
+		void	get_info();		
 };
 
 #endif

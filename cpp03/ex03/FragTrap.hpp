@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 12:46:06 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/09 16:33:54 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/11 16:34:18 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class FragTrap : virtual public ClapTrap
 		~FragTrap();
 		
 		void highFivesGuys(void);
+
 };
 
 #endif
