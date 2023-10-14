@@ -22,7 +22,7 @@ class Animal
 		Animal();
 		Animal(const Animal &og);
 		Animal& operator=(const Animal &og);
-		~Animal();
+		virtual ~Animal();
 
 		std::string	getType() const;
 		
