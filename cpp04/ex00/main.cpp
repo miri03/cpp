@@ -6,13 +6,14 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 16:38:58 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/14 00:01:08 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/14 15:20:54 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include  "Cat.hpp"
 #include  "Dog.hpp"
+#include "WrongCat.hpp"
 
 int main()
 {
@@ -29,6 +30,19 @@ int main()
 	delete j;
 	delete i;
 	delete meta;
+
+	std::cout << "---------Wrong---------------\n";
+
+	const WrongAnimal* meta_ = new WrongAnimal();
+	const WrongAnimal* i_ = new WrongCat();
+
+
+	std::cout << i_->getType() << " " << std::endl;
+	i_->makeSound(); //will output the wrong sound!
+	meta_->makeSound();
+
+	delete meta_;
+	delete i_;
 
 	return 0;
 }

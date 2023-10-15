@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 12:42:31 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/15 21:10:00 by meharit          ###   ########.fr       */
+/*   Created: 2023/10/14 14:43:25 by meharit           #+#    #+#             */
+/*   Updated: 2023/10/14 15:20:06 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
-#include "ScavTrap.hpp"
-#include "DiamondTrap.hpp"
-
-int main()
+#ifndef WRONGANIMAL_HPP
+# define WRONGANIMAL_HPP
+# include <iostream>
+class WrongAnimal
 {
-	DiamondTrap d("Tom");
+	protected:
+		std::string type;
+	public:
+		WrongAnimal();
+		WrongAnimal(const WrongAnimal& og);
+		WrongAnimal& operator=(const WrongAnimal& og);
+		virtual ~WrongAnimal();
 
-	d.whoAmI();
-	d.attack("you");
-	d.highFivesGuys();
-	d.guardGate();
-	d.takeDamage(50);
-	d.beRepaired(1);
-}
+		std::string	getType() const;
+
+		void makeSound() const;
+};
+
+
+#endif

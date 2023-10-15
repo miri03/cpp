@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 12:42:31 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/15 21:10:00 by meharit          ###   ########.fr       */
+/*   Created: 2023/10/14 14:43:23 by meharit           #+#    #+#             */
+/*   Updated: 2023/10/14 15:14:46 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
-#include "ScavTrap.hpp"
-#include "DiamondTrap.hpp"
+#ifndef WRONGCAT_HPP
+# define WRONGCAT_HPP
+# include <iostream>
+# include "WrongAnimal.hpp"
 
-int main()
+class WrongCat : public WrongAnimal
 {
-	DiamondTrap d("Tom");
+	public:
+		WrongCat();
+		WrongCat(const WrongCat& og);
+		WrongCat& operator=(const WrongCat& og);
+		~WrongCat();
 
-	d.whoAmI();
-	d.attack("you");
-	d.highFivesGuys();
-	d.guardGate();
-	d.takeDamage(50);
-	d.beRepaired(1);
-}
+		void makeSound() const;
+};
+
+#endif
