@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
+/*   By: meryemharit <meryemharit@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 03:01:26 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/17 03:15:33 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/17 16:43:04 by meryemharit      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ class Cure : public AMateria
 		Cure();
 		Cure(const Cure& og);
 		Cure& operator=(const Cure& og);
-		~Cure();	
+		~Cure();
+
+		AMateria* clone() const;		
+		void use(ICharacter& target);
 };
 
 #endif
