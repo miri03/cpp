@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meryemharit <meryemharit@student.42.fr>    +#+  +:+       +#+        */
+/*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 03:01:50 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/17 17:10:30 by meryemharit      ###   ########.fr       */
+/*   Updated: 2023/10/17 21:03:37 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ AMateria* Cure::clone() const
 
 void Cure::use(ICharacter& target)
 {
-	std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+	std::cout << "Cure * heals " << target.getName() << "'s wounds *" << std::endl;
 }
 
 Cure::~Cure()

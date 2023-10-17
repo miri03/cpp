@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.cpp                                     :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 16:55:36 by meryemharit       #+#    #+#             */
-/*   Updated: 2023/10/17 20:37:05 by meharit          ###   ########.fr       */
+/*   Created: 2023/10/17 20:38:33 by meharit           #+#    #+#             */
+/*   Updated: 2023/10/17 20:55:46 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ICharacter.hpp"
+#ifndef CHARACTER_HPP
+# define CHARACTER_HPP
 
-ICharacter::ICharacter()
+#include "ICharacter.hpp"
+#include <iostream>
+
+class Character : public ICharacter
 {
-    std::cout << "ICharacter's Default constructor called" << std::endl;
-}
+	private:
+		std::string name;
+	public:
+		Character(std::string);
+		Character();
+		// Character(const Character& og);
+		// Character& operator=(const Character& og);
+		~Character();
+		std::string const & getName() const;
+		
+};
 
+#endif

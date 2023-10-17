@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meryemharit <meryemharit@student.42.fr>    +#+  +:+       +#+        */
+/*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 02:59:41 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/17 16:41:29 by meryemharit      ###   ########.fr       */
+/*   Updated: 2023/10/17 21:04:17 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ Ice& Ice::operator=(const Ice& og)
 AMateria* Ice::clone() const
 {
 	return (new Ice);
+}
+
+void Ice::use(ICharacter& target)
+{
+	std::cout << "Ice * shoots an ice bolt at " << target.getName()  << std::endl;
 }
 
 Ice::~Ice()
