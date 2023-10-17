@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 16:38:58 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/17 02:18:24 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/17 02:24:24 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 int main()
 {
+	// Animal test;  //should give an error
+	
 	const Animal* meta[4];
 	
 	for (int i = 0; i < 2; i++)
@@ -27,8 +29,6 @@ int main()
 	std::cout << "##################" << std::endl;
 	for (int i = 0; i < 4; i++)
 		delete meta[i];
-	
-
 
 	//////////////////COPY CONSTRUCTOR/ASSIGNEMENT TEST///////
 	// Dog Jake;

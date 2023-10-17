@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/14 16:13:47 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/17 01:10:57 by meharit          ###   ########.fr       */
+/*   Created: 2023/10/17 02:59:42 by meharit           #+#    #+#             */
+/*   Updated: 2023/10/17 03:15:22 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-# define BRAIN_HPP
-# include <iostream>
+#ifndef ICE_HPP
+# define ICE_HPP
 
-class Brain
+# include <iostream>
+#include "AMateria.hpp"
+
+class Ice : public AMateria
 {
-	private:
-		std::string ideas[100];
 	public:
-		Brain();
-		Brain(const Brain& og);
-		Brain& operator=(const Brain& og);
-		~Brain();
+		Ice();
+		Ice(const Ice& og);
+		Ice& operator=(const Ice& og);
+		~Ice();	
 };
 
 #endif

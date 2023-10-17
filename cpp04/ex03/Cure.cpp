@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/14 16:13:47 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/17 01:10:57 by meharit          ###   ########.fr       */
+/*   Created: 2023/10/17 03:01:50 by meharit           #+#    #+#             */
+/*   Updated: 2023/10/17 03:15:28 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
-# define BRAIN_HPP
-# include <iostream>
+#include "Cure.hpp"
 
-class Brain
+Cure::Cure()
 {
-	private:
-		std::string ideas[100];
-	public:
-		Brain();
-		Brain(const Brain& og);
-		Brain& operator=(const Brain& og);
-		~Brain();
-};
+	std::cout << "Cure's Default constructor called" << std::endl;
+	type = "cure";
+}
 
-#endif
+Cure::Cure(const Cure& og)
+{
+	std::cout << "Cure's Copy constructor called" << std::endl;
+	*this = og;
+}
+
+Cure& Cure::operator=(const Cure& og)
+{
+	std::cout << "Cure's Assignement operator called"  << std::endl;
+}
+
+Cure::~Cure()
+{
+	std::cout << "Cure's Destructor called" << std::endl;
+}

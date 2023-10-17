@@ -1,6 +1,6 @@
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = brain
+NAME = abstract
 
 RM = rm -rf
 
