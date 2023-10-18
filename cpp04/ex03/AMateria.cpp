@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meryemharit <meryemharit@student.42.fr>    +#+  +:+       +#+        */
+/*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 02:42:17 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/17 17:10:06 by meryemharit      ###   ########.fr       */
+/*   Updated: 2023/10/18 14:51:09 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,11 @@ AMateria& AMateria::operator=(const AMateria& og)
 	std::cout << "AMateria's Assignement operator called"  << std::endl;
 	type = og.type;
 	return (*this);
+}
+
+void AMateria::use(ICharacter& target)
+{
+	(void)target;
 }
 
 std::string const & AMateria::getType() const

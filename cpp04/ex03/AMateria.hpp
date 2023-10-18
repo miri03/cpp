@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 02:49:12 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/17 21:09:16 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/18 16:38:12 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <iostream>
 # include "ICharacter.hpp"
 
-class AMateria             //base class of ice and cure
+class AMateria             //base class of Ice and Cure  //abstract class
 {
 	protected:
 		std::string type;
@@ -27,7 +27,7 @@ class AMateria             //base class of ice and cure
 		AMateria();
 		AMateria(const AMateria& og);
 		AMateria& operator=(const AMateria& og);
-		~AMateria();
+		virtual ~AMateria();
 		
 		// [...]
 		std::string const & getType() const; //Returns the materia type
