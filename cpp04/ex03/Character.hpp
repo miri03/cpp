@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 20:38:33 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/18 19:46:09 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/18 23:51:07 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class Character : public ICharacter
 	public:
 		Character(std::string);
 		Character();
-		// Character(const Character& og);
-		// Character& operator=(const Character& og);
+		Character(const Character& og);
+		Character& operator=(const Character& og);
 		~Character();
 		
 		std::string const & getName() const;
