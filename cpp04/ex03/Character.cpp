@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 20:38:17 by meharit           #+#    #+#             */
-/*   Updated: 2023/10/19 00:11:00 by meharit          ###   ########.fr       */
+/*   Updated: 2023/10/20 00:26:00 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,14 @@ Character::Character(std::string _name)
 Character::Character(const Character& og)
 {
 	std::cout << "Character's Copy constructor called" << std::endl;
-	*this = og;
+	name = og.name;
+	for (int i = 0; i < 4; i++)
+	{
+		if (!og.inventory[i])
+			inventory[i] = NULL;
+		else
+			inventory[i] = (og.inventory[i]->clone());
+	}
 }
 
 Character& Character::operator=(const Character& og)
@@ -42,7 +49,11 @@ Character& Character::operator=(const Character& og)
 	{
 		if (!og.inventory[i])
 			inventory[i] = NULL;
-		inventory[i] = (og.inventory[i]);
+		else
+		{
+			delete inventory[i];
+			inventory[i] = (og.inventory[i]->clone());
+		}
 	}
 	return(*this);
 }
@@ -54,6 +65,8 @@ std::string const & Character::getName() const
 
 void	Character::equip(AMateria* m)
 {
+	if (!m)
+		return ;
 	for (int i = 0; i < 4; i++)
 	{
 		if (inventory[i] == NULL)
@@ -77,6 +90,7 @@ void Character::unequip(int idx)
 {
 	if (idx >= 0 && idx < 4)
 	{
+		std::cout << "### unequip " << inventory[idx] << std::endl;
 		inventory[idx] = NULL;
 	}
 }
@@ -84,11 +98,13 @@ void Character::unequip(int idx)
 Character::~Character()
 {
 	std::cout << "Character's Destructor called" << std::endl;
-	// int i = 0;
-	// while (i < 4)
-	// {
-	// 	if (inventory[i])
-	// 		delete inventory[i];
-	// 	i++;
-	// }
+	int i = 0;
+	while (i < 4)
+	{
+		if (inventory[i])	{
+			std::cout << "ch des -- " << inventory[i] << std::endl;
+			delete inventory[i];
+		}
+		i++;
+	}
 }
