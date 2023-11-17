@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:41:07 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/17 17:05:47 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/17 21:19:12 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,3 +76,12 @@ std::ostream& operator<<(std::ostream& os, Bureaucrat &bur)
 }
 
 Bureaucrat::~Bureaucrat(){}
+
+void	Bureaucrat::signForm(Form frm)
+{
+	if (frm.get_sign() == true)
+		std::cout << getName() << " signed " << frm.get_name();
+	else
+		std::cout << getName() << " couldn't sign " << frm.get_name() << " because grade too Low\n";
+		
+}

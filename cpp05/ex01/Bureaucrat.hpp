@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:41:09 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/17 17:07:52 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/17 21:16:01 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,15 @@
 # include <iostream>
 # include <exception>
 
+#include "Form.hpp"
+
+class Form;
+
 class Bureaucrat
 {
 	private:
 		const std::string	name;
-		int			grade;
+		int					grade;
 	public:
 		Bureaucrat(const std::string, int);
 		//////canonical form///////////////
@@ -45,6 +49,8 @@ class Bureaucrat
 			public:
 				virtual const char* what() const throw();
 		};
+		/////////////////////////////////////////////
+		void	signForm(Form);
 };
 
 std::ostream& operator<<(std::ostream& os, Bureaucrat &bur);
