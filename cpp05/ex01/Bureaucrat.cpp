@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
+/*   By: meryemharit <meryemharit@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:41:07 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/17 21:19:12 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/18 15:14:47 by meryemharit      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,13 @@ Bureaucrat::~Bureaucrat(){}
 void	Bureaucrat::signForm(Form frm)
 {
 	if (frm.get_sign() == true)
-		std::cout << getName() << " signed " << frm.get_name();
+		std::cout << "Bureaucrat " << getName() << " signed the form " << frm.get_name() << std::endl;
 	else
-		std::cout << getName() << " couldn't sign " << frm.get_name() << " because grade too Low\n";
-		
+	{
+		std::cout << "Bureaucrat " << getName() << " couldn't sign the form " << frm.get_name();
+		if (getGrade() > frm.get_grade_sign())
+			std::cout << " because grade too low" << std::endl;
+		else
+			std::cout << " because it's still not signed" << std::endl;	
+	}		
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
+/*   By: meryemharit <meryemharit@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:10:29 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/18 14:23:20 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/18 14:47:14 by meryemharit      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Form::Form() : name("default"), sign(false), grade_sign(150), grade_excec(150){}
 
-Form::Form(const Form& og) : name(og.name), grade_sign(150), grade_excec(150)
+Form::Form(const Form& og) : name(og.name), grade_sign(og.grade_sign), grade_excec(og.grade_excec)
 {
 	*this = og;
 }
@@ -27,7 +27,7 @@ Form& Form::operator=(const Form& og)
 
 Form::~Form() {}
 
-Form::Form(std::string _name, int sign, int exec): name(_name), sign(false), grade_sign(150), grade_excec(150)
+Form::Form(std::string _name, int sign, int exec): name(_name), sign(false), grade_sign(sign), grade_excec(exec)
 {
 	if (sign < 1)
 		throw Form::GradeTooHighException();
