@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:10:27 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/17 21:54:23 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/18 14:14:20 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 class Bureaucrat;
 
-class Form //frm
+class Form
 {
 	private:
 		const std::string name;

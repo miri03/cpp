@@ -6,15 +6,15 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 17:10:29 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/17 20:49:03 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/18 14:23:20 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form() : name("default"), sign(false), grade_excec(150), grade_sign(150){}
+Form::Form() : name("default"), sign(false), grade_sign(150), grade_excec(150){}
 
-Form::Form(const Form& og) : name(og.name), grade_excec(150), grade_sign(150)
+Form::Form(const Form& og) : name(og.name), grade_sign(150), grade_excec(150)
 {
 	*this = og;
 }
@@ -27,7 +27,7 @@ Form& Form::operator=(const Form& og)
 
 Form::~Form() {}
 
-Form::Form(std::string _name, int sign, int exec): name(_name),grade_excec(exec), grade_sign(sign), sign(false)
+Form::Form(std::string _name, int sign, int exec): name(_name), sign(false), grade_sign(150), grade_excec(150)
 {
 	if (sign < 1)
 		throw Form::GradeTooHighException();
@@ -78,10 +78,12 @@ void	Form::beSigned(Bureaucrat bur)
 
 std::ostream& operator<<(std::ostream& os, Form &frm)
 {
-	os << frm.get_name() << " grade required to execute it" << frm.get_grade_exec();
-	os << "  grade required to sign it" << frm.get_grade_sign();
+	os << "Name : " << frm.get_name() << std::endl;
+	os << "Grade required to execute it " << frm.get_grade_exec() << std::endl;;
+	os << "Grade required to sign it " << frm.get_grade_sign() << std::endl;;
 	if (frm.get_sign())
-		os << " form is signed";
+		os << "Form is signed";
 	else
-		os << " form is not signed";
+		os << "Form is not signed";
+	return (os);
 }
