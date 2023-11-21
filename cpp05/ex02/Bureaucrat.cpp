@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:41:07 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/20 13:19:10 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/20 18:19:45 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& og)
 	return (*this);
 }
 
-std::string	Bureaucrat::getName()
+std::string	Bureaucrat::getName()const
 {
 	return (name);
 }
 
-int	Bureaucrat::getGrade()
+int	Bureaucrat::getGrade()const
 {
 	return (grade);
 }
@@ -77,7 +77,7 @@ std::ostream& operator<<(std::ostream& os, Bureaucrat &bur)
 
 Bureaucrat::~Bureaucrat(){}
 
-void	Bureaucrat::signForm(Form &frm)
+void	Bureaucrat::signForm(AForm &frm)
 {
 	if (!frm.get_sign() && getGrade() < frm.get_grade_sign())
 	{
@@ -92,4 +92,13 @@ void	Bureaucrat::signForm(Form &frm)
 		else if (getGrade() > frm.get_grade_sign())
 			std::cout << " because grade too low" << std::endl;
 	}
+}
+
+void	Bureaucrat::executeForm(AForm const & form)
+{
+	if (getGrade() < form.get_grade_exec())
+		std::cout << getName() << " executed " << form.get_name() << std::endl;
+	else
+		std::cout << getName() << " couldn't execute the " << form.get_name() << " because grade too low."<< std::endl;
+		
 }

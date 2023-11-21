@@ -6,29 +6,37 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:40:47 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/18 18:54:47 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/20 21:23:03 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+
+#define RESET "\x1b[0m"
+#define RED "\x1b[31m"
 
 int main()
 {
 	try
 	{
-		Bureaucrat b1("av", 150);
-		Form f1("div", 1, 150);
-		Bureaucrat b2("av2", 11);
+		Bureaucrat b1("Wonka", 1);
+		ShrubberyCreationForm t("Oompa Loompa");
+		b1.signForm(t);
 
-		std::cout << f1 << std::endl;
-		std::cout << b1 << std::endl;
-		f1.beSigned(b1);
-		std::cout << f1 << std::endl;
-		b2.signForm(f1);
+		ShrubberyCreationForm t1;
+		t1 = t;
+		std::cout << t << std::endl;
+		std::cout << t1 << std::endl;
+		// b1.signForm(t);
+		// std::cout << t << std::endl;
+		// std::cout << b1 << std::endl;
+		// t.execute(b1);
+		// b1.executeForm(t);
 	}
-	catch(std::exception& e)
+	catch(std::exception &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << RED << "EXCEPTION: " << RESET << e.what() << std::endl;
 	}
-	
 }

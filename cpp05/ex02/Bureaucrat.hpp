@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:41:09 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/20 13:13:45 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/20 16:48:30 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <iostream>
 # include <exception>
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -33,8 +33,8 @@ class Bureaucrat
 		Bureaucrat& operator=(const Bureaucrat& og);
 		~Bureaucrat();
 		/////////////////////////////////////
-		std::string	getName();
-		int			getGrade();
+		std::string	getName()const;
+		int			getGrade()const;
 		//////////////////////////////////////
 		void increment_grade();
 		void decrement_grade();
@@ -50,7 +50,8 @@ class Bureaucrat
 				virtual const char* what() const throw();
 		};
 		/////////////////////////////////////////////
-		void	signForm(Form&);
+		void	signForm(AForm&);
+		void	executeForm(AForm const & form);
 };
 
 std::ostream& operator<<(std::ostream& os, Bureaucrat &bur);
