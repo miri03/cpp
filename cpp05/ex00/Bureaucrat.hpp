@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:41:09 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/17 17:07:52 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/27 21:26:54 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Bureaucrat
 {
 	private:
 		const std::string	name;
-		int			grade;
+		int					grade;
 	public:
 		Bureaucrat(const std::string, int);
 		//////canonical form///////////////
@@ -49,6 +49,4 @@ class Bureaucrat
 
 std::ostream& operator<<(std::ostream& os, Bureaucrat &bur);
 
-//inside the class?
-//operator= name ??
 #endif

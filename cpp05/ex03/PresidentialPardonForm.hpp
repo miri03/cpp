@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:52:49 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/21 16:13:26 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/28 18:05:51 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ class PresidentialPardonForm : public AForm
 		~PresidentialPardonForm();
 		/////////////////////////////////////		
 		std::string	get_target() const ;
-		static PresidentialPardonForm* create_obj();
 
 		void	execute(Bureaucrat const & executor) const;
 };

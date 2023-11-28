@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 13:35:23 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/20 19:41:27 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/28 16:47:57 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <iostream>
 class Bureaucrat;
 
-class AForm  //virtual destr ??
+class AForm
 {
 	private:
 		const std::string	name;

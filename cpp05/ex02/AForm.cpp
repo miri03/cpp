@@ -6,29 +6,38 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 13:36:50 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/20 18:08:47 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/27 22:29:22 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AForm.hpp"
 
-AForm::AForm() : name("default"), sign(false), grade_sign(150), grade_exec(150){}
+AForm::AForm() : name("default"), sign(false), grade_sign(150), grade_exec(150)
+{
+	std::cout << "AForm's Default constructor called " << std::endl;
+}
 
 AForm::AForm(const AForm& og) : name(og.name), grade_sign(og.grade_sign), grade_exec(og.grade_exec)
 {
+	std::cout << "AForm's Copy constructor called " << std::endl;
 	*this = og;
 }
 
 AForm& AForm::operator=(const AForm& og)
 {
+	std::cout << "AForm's Assignment operator called" << std::endl;
 	sign = og.sign;
 	return (*this);
 }
 
-AForm::~AForm() {}
+AForm::~AForm()
+{
+	std::cout << "AForm's Default destructor called" << std::endl;
+}
 
 AForm::AForm(std::string _name, int sign, int exec): name(_name), sign(false), grade_sign(sign), grade_exec(exec)
 {
+	std::cout << "AForm's Parameterized constructor called" << std::endl;
 	if (sign < 1)
 		throw AForm::GradeTooHighException();
 	else if (sign > 150)
@@ -44,17 +53,17 @@ std::string AForm::get_name ()const
 	return (name);
 }
 
-bool			AForm::get_sign()const
+bool AForm::get_sign()const
 {
 	return (sign);
 }
 
-int			AForm::get_grade_sign()const
+int	AForm::get_grade_sign()const
 {
 	return (grade_sign);
 }
 
-int			AForm::get_grade_exec()const
+int AForm::get_grade_exec()const
 {
 	return (grade_exec);
 }

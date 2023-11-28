@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 13:35:23 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/21 16:29:47 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/28 18:05:23 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <iostream>
 class Bureaucrat;
 
-class AForm  //virtual destr ??
+class AForm
 {
 	private:
 		const std::string	name;
@@ -31,7 +31,7 @@ class AForm  //virtual destr ??
 		AForm();
 		AForm(const AForm& og);
 		AForm& operator=(const AForm& og);
-		~AForm();
+		virtual ~AForm();
 		///////////////////////////////
 		std::string get_name() const;
 		bool		get_sign() const;

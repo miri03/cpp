@@ -6,16 +6,20 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:41:07 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/17 17:05:47 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/27 21:33:17 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : name("default") , grade(150){}
+Bureaucrat::Bureaucrat() : name("default") , grade(150)
+{
+	std::cout << "Default constructor called " << std::endl;
+}
 
 Bureaucrat::Bureaucrat(const std::string _name, int _grade) : name(_name)
 {
+	std::cout << "Parameterized constructor called " << std::endl;
 	if (_grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	else if (_grade > 150)
@@ -25,12 +29,13 @@ Bureaucrat::Bureaucrat(const std::string _name, int _grade) : name(_name)
 
 Bureaucrat::Bureaucrat(const Bureaucrat& og) : name(og.name)
 {
+	std::cout << "Copy constructor called " << std::endl;
 	*this = og;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& og)
 {
-	// name = og.name; ///????
+	std::cout << "Assignment operator called" << std::endl;
 	grade = og.grade;
 	return (*this);
 }
@@ -75,4 +80,7 @@ std::ostream& operator<<(std::ostream& os, Bureaucrat &bur)
 	return (os);
 }
 
-Bureaucrat::~Bureaucrat(){}
+Bureaucrat::~Bureaucrat()
+{
+	std::cout << "Default destructor called" << std::endl;
+}

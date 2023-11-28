@@ -6,15 +6,13 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 16:26:05 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/20 21:20:29 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/28 16:26:45 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
 #define GREEN "\x1b[32m"
-#define RESET "\x1b[0m"
-
 
 ShrubberyCreationForm::ShrubberyCreationForm (std::string _target) : AForm(_target, 145, 137)
 {
@@ -52,7 +50,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 	ofs.open(filename.c_str(), std::ofstream::out);
 	if (!ofs)
 	{
-		perror(filename.c_str()); //throw exception?
+		perror(filename.c_str());
 		return;
 	}
 	ofs << GREEN << "               ,@@@@@@@,\n";

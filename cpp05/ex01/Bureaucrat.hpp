@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:41:09 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/20 13:13:45 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/27 21:46:17 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,4 @@ class Bureaucrat
 
 std::ostream& operator<<(std::ostream& os, Bureaucrat &bur);
 
-//inside the class?
-//operator= name ??
 #endif

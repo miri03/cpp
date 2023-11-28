@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 12:21:27 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/21 16:28:45 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/28 18:04:52 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ AForm* Intern::makeForm(std::string form, std::string target)
 		case 1:
 			return new RobotomyRequestForm(target);
 		case 2:
-			return new ShrubberyCreationForm(target);			
+			return new ShrubberyCreationForm(target);
+		default:
+			throw std::runtime_error("Form not found");
 	}
 	return NULL;
 }

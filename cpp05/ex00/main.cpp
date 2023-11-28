@@ -6,11 +6,14 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:40:47 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/17 17:05:27 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/27 21:43:51 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+
+#define RESET "\x1b[0m"
+#define RED "\x1b[31m"
 
 int main()
 {
@@ -24,8 +27,8 @@ int main()
         first.increment_grade();
     }
 	
-    catch (std::exception & e)
-    {
-        std::cout << e.what() << std::endl;
-    }
+    catch(std::exception &e)
+	{
+		std::cout << RED << "EXCEPTION: " << RESET << e.what() << std::endl;
+	}
 }

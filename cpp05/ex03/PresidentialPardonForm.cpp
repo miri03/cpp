@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 14:54:41 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/21 16:01:38 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/28 18:05:47 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,4 @@ void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
 		throw AForm::FormNotSigned();
 
 	std::cout << get_target() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
-}
-
-PresidentialPardonForm* PresidentialPardonForm::create_obj()
-{
-	return(NULL);
 }
