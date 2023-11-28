@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 12:40:47 by meharit           #+#    #+#             */
-/*   Updated: 2023/11/28 18:40:00 by meharit          ###   ########.fr       */
+/*   Updated: 2023/11/28 18:41:35 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int main(void)
 	{
 		test1();
 		std::cout << "***********test 1 done***********" << std::endl;
-		// test2();
-		// std::cout << "***********test 2 done***********" << std::endl;
+		test2();
+		std::cout << "***********test 2 done***********" << std::endl;
 	}
 	catch(std::exception &e)
 	{
