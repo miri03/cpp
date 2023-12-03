@@ -53,11 +53,11 @@ void	convert_char(std::string input)
 	exit(0);
 }
 
-void	convert_int(const char *input)
+void	convert_int(const char *input) //check int min for isprint()
 {
 	long long tmp = atoll(input);
 ///////////////////////////////////////////////////////////////////////
-	if (tmp >= 127 || !isprint(tmp)) //check int max
+	if (tmp >= 127 || !isprint(tmp))
 		std::cout << "char: non displayable" << std::endl;
 	else
 		std::cout << "char: '" << (unsigned char) tmp << "'" << std::endl;
@@ -71,6 +71,24 @@ void	convert_int(const char *input)
 	std::cout << "double : " << static_cast<double>(tmp) << ".0" << std::endl;
 }
 
+void	convert_double(const char* input) //4.0
+{	
+	double tmp = atof(input);
+///////////////////////////////////////////////////////////////////////
+	if (tmp >= 127 || !isprint(tmp))
+		std::cout << "char: non displayable" << std::endl;
+	else
+		std::cout << "char: '" << (unsigned char) tmp << "'" << std::endl;
+///////////////////////////////////////////////////////////////////////
+	if (tmp < INT_MIN || tmp > INT_MAX)
+		std::cout << "int : impossible" << std::endl;
+	else
+		std::cout << "int : " << static_cast<int>(tmp) << std::endl;
+///////////////////////////////////////////////////////////////////////
+	std::cout << "float : " << static_cast<float>(tmp) << "f" << std::endl;
+	std::cout << "double : " << tmp << std::endl;
+}
+
 void ScalarConverter::convert(std::string input)
 {
 	if (check_char(input.c_str()))
@@ -78,11 +96,9 @@ void ScalarConverter::convert(std::string input)
 
 	if (check_int(input.c_str()))
 		convert_int(input.c_str());
-		
-	check_double(input.c_str());
 	
-	// if (check_double(input.c_str()))
-		// convert_double(input.c_str());
+	if (check_double(input.c_str()))
+		convert_double(input.c_str());
 		
 	// if (check_int(input.c_str()))
 	// 	convert_int(input.c_str());
