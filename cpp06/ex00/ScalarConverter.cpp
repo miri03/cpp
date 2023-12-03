@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meryemharit <meryemharit@student.42.fr>    +#+  +:+       +#+        */
+/*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:13:30 by meharit           #+#    #+#             */
-/*   Updated: 2023/12/01 18:53:52 by meryemharit      ###   ########.fr       */
+/*   Updated: 2023/12/03 21:29:41 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-
-long long ScalarConverter::store_int = 0;
 
 int	check_char(const char *check)
 {
@@ -21,15 +19,12 @@ int	check_char(const char *check)
 	return (0);
 }
 
-int	check_int(const char *check, long long *tmp)
+int	check_int(const char *check)
 {
 	char *buff;
-	long cast = strtol(check, &buff, 10);
-	(void) cast;
+	strtol(check, &buff, 10);
 	if (*buff)
 		return (0);
-	*tmp = atoll(check);
-	// std::cout << "----------------- " << *tmp << std::endl;
 	return (1);
 }
 
@@ -38,10 +33,16 @@ int	check_int(const char *check, long long *tmp)
 	
 // }
 
-// void	check_double(const char *check)
-// {
+int	check_double(const char *check)
+{
+	char	*buff;
 	
-// }
+	strtod(check, &buff);
+	std::cout << "------------" << *buff << std::endl;
+	if (*buff)
+		return (0);
+	return (1);
+}
 
 void	convert_char(std::string input)
 {
@@ -52,17 +53,20 @@ void	convert_char(std::string input)
 	exit(0);
 }
 
-void	convert_int(std::string input, long long tmp)
+void	convert_int(const char *input)
 {
-	(void) input;
-	if (!isprint(tmp))
+	long long tmp = atoll(input);
+///////////////////////////////////////////////////////////////////////
+	if (tmp >= 127 || !isprint(tmp)) //check int max
 		std::cout << "char: non displayable" << std::endl;
 	else
-		std::cout << "char: '" << (char) tmp << "'" << std::endl;
+		std::cout << "char: '" << (unsigned char) tmp << "'" << std::endl;
+///////////////////////////////////////////////////////////////////////
 	if (tmp < INT_MIN || tmp > INT_MAX)
 		std::cout << "int : impossible" << std::endl;
 	else
 		std::cout << "int : " << tmp << std::endl;
+///////////////////////////////////////////////////////////////////////
 	std::cout << "float : " << static_cast<float>(tmp) << ".0f" << std::endl;
 	std::cout << "double : " << static_cast<double>(tmp) << ".0" << std::endl;
 }
@@ -71,11 +75,18 @@ void ScalarConverter::convert(std::string input)
 {
 	if (check_char(input.c_str()))
 		convert_char(input);
-	if (check_int(input.c_str(), &store_int))
-	{
-		convert_int(input, store_int);
-	}
-	else
-		std::cout << "other\n";
+
+	if (check_int(input.c_str()))
+		convert_int(input.c_str());
+		
+	check_double(input.c_str());
+	
+	// if (check_double(input.c_str()))
+		// convert_double(input.c_str());
+		
+	// if (check_int(input.c_str()))
+	// 	convert_int(input.c_str());
+	// else
+	// 	std::cout << "other\n";
 
 }

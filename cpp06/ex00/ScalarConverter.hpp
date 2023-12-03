@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meryemharit <meryemharit@student.42.fr>    +#+  +:+       +#+        */
+/*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 16:50:00 by meharit           #+#    #+#             */
-/*   Updated: 2023/12/01 18:49:11 by meryemharit      ###   ########.fr       */
+/*   Updated: 2023/12/03 18:37:53 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@
 class ScalarConverter
 {
 	public:
-		static long long		store_int;
 		static void	convert(std::string);	
 };
