@@ -19,7 +19,10 @@
 # include <cstdlib>
 # include <stdlib.h> 
 # include <limits.h>
+# include <cmath>
 
+# include <string>
+#include <iomanip>
 class ScalarConverter
 {
 	public:
