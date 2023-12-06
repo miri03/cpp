@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 16:50:00 by meharit           #+#    #+#             */
-/*   Updated: 2023/12/03 18:37:53 by meharit          ###   ########.fr       */
+/*   Updated: 2023/12/05 16:30:04 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,9 @@ class ScalarConverter
 	public:
 		static void	convert(std::string);	
 };
+
+int	check_char(const char *check);
+int	check_int(const char *check);
+int	check_double(const char *check);
+int	check_float(const char *check);
+int additional_check(std::string input);

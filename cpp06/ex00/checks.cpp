@@ -1,0 +1,87 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checks.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/05 16:23:13 by meharit           #+#    #+#             */
+/*   Updated: 2023/12/06 09:31:03 by meharit          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ScalarConverter.hpp"
+
+// -inff +inff -inf +inf nan nanf 
+
+int is_all_alpha(const char* str)
+{
+
+	///// int and double not working anymore because of this function
+	
+	int i = 0;
+    for ( ; i < (int)strlen(str) - 1; i++)
+    {
+        if (isalpha(str[i]))
+            return (1);
+    }
+	if (str[i] != 'f')
+		return (1);
+    return (0);
+}
+
+int additional_check(std::string input)
+{
+	if (input == "-inff" || input == "+inff" || input == "nanf")
+		return (0);
+    if (input == "-inf" || input == "+inf" || input == "nan")
+        return (0);  
+
+    if (strlen(input.c_str()) > 1 && is_all_alpha(input.c_str()))
+        return(1);
+    return (0);
+}
+
+int	check_char(const char *check)
+{
+	if (strlen(check) == 1 && (isprint(check[0]) && !isdigit(check[0])))
+		return (1);
+	return (0);
+}
+
+int	check_int(const char *check)
+{
+	char *buff;
+	strtol(check, &buff, 10);
+	if (*buff)
+		return (0);
+	std::cout << "is int\n";
+	return (1);
+}
+
+int	check_double(const char *check)
+{
+	char	*buff;
+	
+	strtod(check, &buff);
+	if (*buff)
+		return (0);
+	std::cout << "is double\n";
+	return (1);
+}
+
+
+// . not the first and (f is the last and the char before it i not .)
+
+int	check_float(const char *check)
+{
+	char *buff;
+	
+	strtof(check, &buff);
+	if (*buff)
+	{
+		std::cout << "------------" << *buff << std::endl;
+		return (0);
+	}
+	return (1);
+}

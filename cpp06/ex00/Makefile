@@ -4,7 +4,7 @@ NAME = convert
 
 RM = rm -rf
 
-CFILE = $(wildcard *.cpp)
+CFILE = checks.cpp main.cpp ScalarConverter.cpp \
 
 CXX = c++
 
