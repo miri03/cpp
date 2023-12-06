@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:23:13 by meharit           #+#    #+#             */
-/*   Updated: 2023/12/06 09:31:03 by meharit          ###   ########.fr       */
+/*   Updated: 2023/12/06 12:26:25 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 // -inff +inff -inf +inf nan nanf 
 
-int is_all_alpha(const char* str)
+int error_is_all_alpha(const char* str)
 {
-
-	///// int and double not working anymore because of this function
-	
 	int i = 0;
     for ( ; i < (int)strlen(str) - 1; i++)
     {
         if (isalpha(str[i]))
             return (1);
-    }
-	if (str[i] != 'f')
+	}
+	
+	if (!isdigit(str[i]) && str[i] != 'f')
 		return (1);
+
     return (0);
 }
 
@@ -36,8 +35,8 @@ int additional_check(std::string input)
 		return (0);
     if (input == "-inf" || input == "+inf" || input == "nan")
         return (0);  
-
-    if (strlen(input.c_str()) > 1 && is_all_alpha(input.c_str()))
+	
+    if (strlen(input.c_str()) > 1 && (input[0] == '.' || error_is_all_alpha(input.c_str())))
         return(1);
     return (0);
 }
@@ -70,18 +69,17 @@ int	check_double(const char *check)
 	return (1);
 }
 
-
-// . not the first and (f is the last and the char before it i not .)
-
 int	check_float(const char *check)
 {
 	char *buff;
-	
+
 	strtof(check, &buff);
-	if (*buff)
-	{
-		std::cout << "------------" << *buff << std::endl;
+	if (*buff != 'f')
 		return (0);
-	}
+
+	buff--;
+	if (*buff == '.')
+		return (0);
+	std::cout << "float\n";
 	return (1);
 }

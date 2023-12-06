@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:13:30 by meharit           #+#    #+#             */
-/*   Updated: 2023/12/05 17:42:44 by meharit          ###   ########.fr       */
+/*   Updated: 2023/12/06 12:27:35 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	convert_char(std::string input)
 	exit(0);
 }
 
-void	convert_int(const char *input)   // [check int min for isprint() in linux]
+void	convert_int(const char *input)
 {
 	long long tmp = atoll(input);
 	
@@ -43,6 +43,8 @@ void	convert_double(const char* input)
 {	
 	double tmp = atof(input);
     
+	std::cout << tmp << std::endl;
+
 	if (tmp >= 127 || !isprint(tmp))
 		std::cout << "char: Non Displayable" << std::endl;
 	else
@@ -58,17 +60,25 @@ void	convert_double(const char* input)
 		std::cout << "double : " << tmp << std::endl;
 }
 
-void	convert_float(const char* input)
+void	convert_float(const char* input) //2147483647.2f
 {
-	(void) input;
-	std::cout << "is float\n";
 
-	
-	// float tmp = atof(input);
-	// std::cout << "int : " << static_cast<int>(tmp) << std::endl;
+	float tmp = strtof(input, NULL);
     
-	// std::cout << "float : " << tmp << "f" << std::endl;
-	// std::cout << "double : " << static_cast<double>(tmp) << std::endl;
+	std::cout <<  tmp << std::endl;
+
+	if (tmp >= 127 || !isprint(tmp))
+		std::cout << "char: Non Displayable" << std::endl;
+	else
+		std::cout << "char : '" << (unsigned char) tmp << "'" << std::endl;
+    
+	if (tmp < INT_MIN || tmp > INT_MAX || isnan(tmp))
+		std::cout << "int : Impossible" << std::endl;
+	else
+		std::cout << "int : " << static_cast<int>(tmp) << std::endl;
+    
+		std::cout << "float : " << tmp << "f" << std::endl;
+		std::cout << "double : " << static_cast<double>(tmp) << std::endl;
 }
 
 void ScalarConverter::convert(std::string input)
@@ -93,6 +103,4 @@ void ScalarConverter::convert(std::string input)
 
 	else
 		std::cout << "Can't convert!" << std::endl;
-
-
 }
