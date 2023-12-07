@@ -6,13 +6,23 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:23:13 by meharit           #+#    #+#             */
-/*   Updated: 2023/12/06 12:26:25 by meharit          ###   ########.fr       */
+/*   Updated: 2023/12/07 15:20:11 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
 // -inff +inff -inf +inf nan nanf 
+
+int	check_dot(const char* str)
+{
+	for(int i = 0; str[i]; i++)
+	{
+		if (str[i] == '.')
+			return (1);
+	}
+	return (0);
+}
 
 int error_is_all_alpha(const char* str)
 {
@@ -34,7 +44,7 @@ int additional_check(std::string input)
 	if (input == "-inff" || input == "+inff" || input == "nanf")
 		return (0);
     if (input == "-inf" || input == "+inf" || input == "nan")
-        return (0);  
+        return (0);
 	
     if (strlen(input.c_str()) > 1 && (input[0] == '.' || error_is_all_alpha(input.c_str())))
         return(1);
@@ -54,7 +64,6 @@ int	check_int(const char *check)
 	strtol(check, &buff, 10);
 	if (*buff)
 		return (0);
-	std::cout << "is int\n";
 	return (1);
 }
 
@@ -65,7 +74,6 @@ int	check_double(const char *check)
 	strtod(check, &buff);
 	if (*buff)
 		return (0);
-	std::cout << "is double\n";
 	return (1);
 }
 
@@ -74,12 +82,12 @@ int	check_float(const char *check)
 	char *buff;
 
 	strtof(check, &buff);
-	if (*buff != 'f')
+	if (!check_dot(check) || *buff != 'f')
 		return (0);
-
+		
 	buff--;
 	if (*buff == '.')
 		return (0);
-	std::cout << "float\n";
+	std::cout << "is float\n";
 	return (1);
 }
