@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   A.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/01 10:31:59 by meharit           #+#    #+#             */
-/*   Updated: 2023/12/08 16:19:28 by meharit          ###   ########.fr       */
+/*   Created: 2023/12/09 21:14:30 by meharit           #+#    #+#             */
+/*   Updated: 2023/12/09 21:16:12 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ScalarConverter.hpp"
+#pragma once
 
-int main(int argc, char **argv)
-{
-	if (argc != 2)
-	{
-		std::cout << "Nothing to convert" << std::endl;
-		exit(1);
-	}
-	ScalarConverter::convert(argv[1]);
-}
+#include "Base.hpp"
+
+class A : public Base
+{};

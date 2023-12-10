@@ -1,10 +1,10 @@
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = convert
+NAME = Base
 
 RM = rm -rf
 
-CFILE = checks.cpp main.cpp ScalarConverter.cpp \
+CFILE = Base.cpp main.cpp \
 
 CXX = c++
 

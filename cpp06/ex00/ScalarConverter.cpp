@@ -6,11 +6,22 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:13:30 by meharit           #+#    #+#             */
-/*   Updated: 2023/12/07 15:18:24 by meharit          ###   ########.fr       */
+/*   Updated: 2023/12/08 16:25:59 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+
+//////////canonical form/////////////////////
+ScalarConverter::ScalarConverter(){}
+ScalarConverter::ScalarConverter(const ScalarConverter& og){(void)og;}
+ScalarConverter ScalarConverter::operator=(const ScalarConverter& og)
+{
+	(void)og;
+	return (*this);
+}
+ScalarConverter::~ScalarConverter(){}
+//////////////////////////////////////////////
 
 void	convert_char(std::string input)
 {

@@ -1,10 +1,10 @@
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = convert
+NAME = Serialize
 
 RM = rm -rf
 
-CFILE = checks.cpp main.cpp ScalarConverter.cpp \
+CFILE = Serialize.cpp main.cpp \
 
 CXX = c++
 

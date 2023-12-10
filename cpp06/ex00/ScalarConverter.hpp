@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 16:50:00 by meharit           #+#    #+#             */
-/*   Updated: 2023/12/05 16:30:04 by meharit          ###   ########.fr       */
+/*   Updated: 2023/12/08 16:15:00 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,15 @@
 # include <limits.h>
 # include <cmath>
 
-# include <string>
-#include <iomanip>
 class ScalarConverter
 {
+	private:
+	//////////canonical form/////////////////////
+		ScalarConverter();
+		ScalarConverter(const ScalarConverter& og);
+		ScalarConverter operator=(const ScalarConverter& og);
+		~ScalarConverter();
+	//////////////////////////////////////////////
 	public:
 		static void	convert(std::string);	
 };
