@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 16:50:00 by meharit           #+#    #+#             */
-/*   Updated: 2023/12/08 16:15:00 by meharit          ###   ########.fr       */
+/*   Updated: 2023/12/11 16:24:31 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@
 # include <string>
 # include <cctype>
 # include <cstdlib>
-# include <stdlib.h> 
 # include <limits.h>
-# include <cmath>
+# include <cmath> //isnan()
 
 class ScalarConverter
 {

@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:13:30 by meharit           #+#    #+#             */
-/*   Updated: 2023/12/08 16:25:59 by meharit          ###   ########.fr       */
+/*   Updated: 2023/12/13 21:37:31 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	convert_int(const char *input)
 	if (tmp < INT_MIN || tmp > INT_MAX)
 		std::cout << "int : Impossible" << std::endl;
 	else
-		std::cout << "int : " << tmp << std::endl;
+		std::cout << "int : " << (int)tmp << std::endl;
     
 	std::cout << "float : " << static_cast<float>(tmp) << ".0f" << std::endl;
 	std::cout << "double : " << static_cast<double>(tmp) << ".0" << std::endl;
@@ -68,7 +68,7 @@ void	convert_double(const char* input)
 	std::cout << "double : " << tmp << std::endl;
 }
 
-void	convert_float(const char* input) //2147483647.2f
+void	convert_float(const char* input)
 {
 
 	float tmp = strtof(input, NULL);

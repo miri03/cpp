@@ -6,13 +6,11 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:23:13 by meharit           #+#    #+#             */
-/*   Updated: 2023/12/07 15:20:11 by meharit          ###   ########.fr       */
+/*   Updated: 2023/12/12 15:28:05 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-
-// -inff +inff -inf +inf nan nanf 
 
 int	check_dot(const char* str)
 {
