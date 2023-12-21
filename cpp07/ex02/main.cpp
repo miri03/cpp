@@ -6,158 +6,75 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 18:03:46 by meharit           #+#    #+#             */
-/*   Updated: 2023/12/19 20:20:10 by meharit          ###   ########.fr       */
+/*   Updated: 2023/12/21 10:42:06 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
 
-#define MAX_VAL 750
+#define RED "\x1b[31m"
+#define RESET "\x1b[0m"
 
 void	test()
 {
-	// try{
-	// 	Array<const int> numbers(MAX_VAL);
-	// 	std::cout << "size " << numbers.size() << std::endl;
-
-	// 	srand(time(NULL));
-	// 	for (int i = 0; i < MAX_VAL; i++)
-	// 	{
-	// 		const int value = rand() % 750 + 1;
-	// 		numbers[i] = value;
-	// 	}
-	// 	for (int i = 0; i < 10; i++)
-	// 	{
-	// 		std::cout << numbers[i] << std::endl;	
-	// 	}
-	// 	std::cout << "+++++++++++++++++++++++++++++++++++++\n";
-	// 	{
-	// 		Array<int> tmp ;
-	// 		tmp = numbers;
-	// 		Array<int> test(tmp);
-	// 	std::cout << "+++++++++++++++++++++++++++++++++++++\n";
+	try{//*Empty array*//
 		
-	// 	for (int i = 0; i < 10; i++)
-	// 	{
-	// 		std::cout << tmp[i] << std::endl << "------------\n";
-	// 	}
-	// 	}
-	// }
-
-	//  catch(const std::exception& e)
-    // {
-    //     std::cerr << e.what() << '\n';
-    // }	
-	 Array<int> numbers(MAX_VAL);
-    int* mirror = new int[MAX_VAL];
-    srand(time(NULL));
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        const int value = rand();
-        numbers[i] = value;
-        mirror[i] = value;
-    }
-    //SCOPE
-    {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
-    }
-
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        if (mirror[i] != numbers[i])
-        {
-            std::cerr << "didn't save the same value!!" << std::endl;
-            return ;
-        }
-    }
-    try
-    {
-        numbers[-2] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    try
-    {
-        numbers[MAX_VAL] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        numbers[i] = rand();
-    }
-    delete [] mirror;//
-
-	//My tests
+		Array<std::string> empty;
+		std::cout << empty[0] << std::endl;	
+	}
+	catch(std::exception &e)
 	{
-		//Empty array
-		Array<int> g;
-		
-		try{
-			std::cout << g[0] << std::endl;
-		}
-		catch(std::exception &e)	{
-			std::cout << e.what() << std::endl;
-		}
-		//Different types
-		// Array<int> s(10);
+		std::cout << RED << e.what() << RESET << std::endl; 
+	}
+	try{//*Array of n elements*//
+		std::cout << "-------------------------------------" << std::endl;
+		Array<int> array_n(15);
+		std::cout << "initialized by default : " << array_n[10] << std::endl;
+		std::cout << "Array size : " << array_n.size() << std::endl;	
+		std::cout << "assigning to array_n values from 0 to 14" << std::endl;
+		for (int i = 0; i < 15 ; i++)
+			array_n[i] = i;
+		std::cout << "array_n content ==> ";
+		for (int i = 0; i < 15 ; i++)
+			std::cout << array_n[i] << " ";
+		std::cout << std::endl;
+		std::cout << "array_n at index 20 " << array_n[20] << std::endl;
+	}
+	catch(std::exception &e)
+	{
+		std::cout << RED << e.what() << RESET << std::endl; 
+	}
+	
+	try{//*Construction by copy and assignment operator*//
+		std::cout << "-------------------------------------" << std::endl;
+		Array<char> test(9);
+		for (int i = 0; i < 9; i++)
+			test[i] = i + 'A';
+		Array<char> copy_test = test;
+		std::cout << "copy_test size: " << copy_test.size() << " | test size: " << test.size() << std::endl;
+		std::cout << "copy_test content ==> ";
+		for (int i = 0; i < 9 ; i++)
+			std::cout << copy_test[i] << " ";
+		std::cout << std::endl;
 
-		// for (int i = 65, j = 0; i < 75; i++)	{
-		// 	s[j++] = i;
-		// }
-		// Array<char> t(s);
-		// try{
-		// 	std::cout << s[5] << std::endl;
-		// 	std::cout << t[0] << std::endl;
-		// 	std::cout << t[1] << std::endl;
-		// 	std::cout << s[-256] << std::endl;
-		// }
-		// catch (std::exception &e)	{
-		// 	std::cout << e.what() << std::endl;
-		// }
-		{
-			const Array<int> a(5);
-
-			for (unsigned int i = 0; i < 5; i++)    {
-				std::cout << a[i] << " ";
-			}
-			std::cout << std::endl;
-		}
+		std::cout << "-------------------------------------" << std::endl;
+		Array<char> assign_test;
+		assign_test = test;
+		std::cout << "assign_test size: " << assign_test.size() << " | test size: " << test.size() << std::endl;
+		std::cout << "assign_test content ==> ";
+		for (int i = 0; i < 9 ; i++)
+			std::cout << assign_test[i] << " ";
+		std::cout << std::endl;
+		std::cout << "assign_test at index -2 " << assign_test[-2] << std::endl;
+	}
+	catch(std::exception &e)
+	{
+		std::cout << RED << e.what() << RESET << std::endl; 
 	}
 }
 
 int main(int, char**)
 {
-
+	//const int
 	test();
-	system("leaks Array");
-    // try
-    // {
-    //     numbers[-2] = 0;
-    // }
-    // catch(const std::exception& e)
-    // {
-    //     std::cerr << e.what() << '\n';
-    // }
-
-    // return 0;
-
-	// try{
-	// 	Array<int> numbers;
-	// 	std::cout << "size " << numbers.size() << std::endl;
-	// 	std::cout << numbers[1] << std::endl;
-	// }
-	// catch(const std::exception& e)
-    // {
-    //     std::cerr << e.what() << '\n';
-    // }
-
-	// int *test = new int[0];
-	// std::cout << test[0] << std::endl;
 }

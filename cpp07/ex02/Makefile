@@ -12,13 +12,13 @@ OFILE = ${CFILE:.cpp=.o}
 
 all : $(NAME)
 
-$(NAME) : $(OFILE)
+$(NAME) : $(OFILE) 
 	$(CXX) $(CXXFLAGS) $(OFILE) -o $(NAME)
 
 clean:
-	$(RM) $(OFILE) $(OBONUS)
+	$(RM) $(OFILE)
 
 fclean : clean
-	$(RM) $(NAME) $(BONUS)
+	$(RM) $(NAME)
 
 re : fclean all
