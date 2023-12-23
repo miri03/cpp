@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 21:14:34 by meharit           #+#    #+#             */
-/*   Updated: 2023/12/10 16:49:44 by meharit          ###   ########.fr       */
+/*   Updated: 2023/12/23 21:54:44 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ Base* generate(void)
 	}
 	return(NULL);
 }
-
-//dynamic_cast< target-type >( expression )
 
 void identify(Base* p)
 {
