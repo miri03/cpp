@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 17:05:31 by meharit           #+#    #+#             */
-/*   Updated: 2023/12/17 22:47:42 by meharit          ###   ########.fr       */
+/*   Updated: 2023/12/28 15:58:55 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 #include <iostream>
 
-template<typename A, typename N, typename F>
-void iter(A adr, N size, F func)
+template<typename A, typename F>
+void iter(A adr, size_t size, F func)
 {
-	for (int i = 0; i < size; i++)
+	for (size_t i = 0; i < size; i++)
 		func(adr[i]);
 }

@@ -16,9 +16,9 @@ $(NAME) : $(OFILE)
 	$(CXX) $(CXXFLAGS) $(OFILE) -o $(NAME)
 
 clean:
-	$(RM) $(OFILE)
+	$(RM) $(OFILE) $(OBONUS)
 
 fclean : clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(BONUS)
 
 re : fclean all

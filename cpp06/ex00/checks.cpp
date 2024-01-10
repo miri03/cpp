@@ -6,11 +6,21 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 16:23:13 by meharit           #+#    #+#             */
-/*   Updated: 2023/12/26 17:33:29 by meharit          ###   ########.fr       */
+/*   Updated: 2023/12/26 15:34:36 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+
+int	check_dot(const char* str)
+{
+	for(int i = 0; str[i]; i++)
+	{
+		if (str[i] == '.')
+			return (1);
+	}
+	return (0);
+}
 
 int error_is_all_alpha(const char* str)
 {
@@ -48,7 +58,6 @@ int	check_char(const char *check)
 
 int	check_int(const char *check)
 {
-
 	char *buff;
 	strtol(check, &buff, 10);
 	if (*buff)
@@ -66,25 +75,12 @@ int	check_double(const char *check)
 	return (1);
 }
 
-int	check_dot(const char* str)
-{
-	for(int i = 0; str[i]; i++)
-	{
-		if (str[i] == '.')
-			return (1);
-	}
-	return (0);
-}
-
-int	check_float(std::string check)
+int	check_float(const char *check)
 {
 	char *buff;
 
-	if (check == "-inff" || check == "+inff" || check == "nanf")
-		return (1);
-	const char* _check = check.c_str();
-	strtof(_check, &buff);
-	if (!check_dot(_check) || *buff != 'f')
+	strtof(check, &buff);
+	if (!check_dot(check) || *buff != 'f')
 		return (0);
 		
 	buff--;

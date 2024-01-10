@@ -6,13 +6,15 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 18:01:47 by meharit           #+#    #+#             */
-/*   Updated: 2023/12/21 10:39:39 by meharit          ###   ########.fr       */
+/*   Updated: 2023/12/28 17:11:08 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
 #include <exception>
+
+#include <cstdlib> //rand()
 
 template<typename T>
 class Array

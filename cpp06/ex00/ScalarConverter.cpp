@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:13:30 by meharit           #+#    #+#             */
-/*   Updated: 2023/12/26 17:36:00 by meharit          ###   ########.fr       */
+/*   Updated: 2023/12/13 21:37:31 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	convert_int(const char *input)
 	if (tmp < INT_MIN || tmp > INT_MAX)
 		std::cout << "int : Impossible" << std::endl;
 	else
-		std::cout << "int : " << static_cast<int>(tmp) << std::endl;
+		std::cout << "int : " << (int)tmp << std::endl;
     
 	std::cout << "float : " << static_cast<float>(tmp) << ".0f" << std::endl;
 	std::cout << "double : " << static_cast<double>(tmp) << ".0" << std::endl;
@@ -104,7 +104,7 @@ void ScalarConverter::convert(std::string input)
 	else if (check_double(input.c_str()))
 		convert_double(input.c_str());
 		
-	else if (check_float(input))
+	else if (check_float(input.c_str()))
 		convert_float(input.c_str());
 
 	else
