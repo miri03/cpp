@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:01:09 by meharit           #+#    #+#             */
-/*   Updated: 2024/01/10 20:58:43 by meharit          ###   ########.fr       */
+/*   Updated: 2024/01/12 11:19:33 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <exception>
 #include <vector>
 
+#include <cstdlib>
+
 class Span 
 {
 	private:
@@ -24,39 +26,29 @@ class Span
 	public:
 		//canonical form//
 		Span();
-		// Span(const Span& og);
-		// Span& operator=(const Span &og);
+		Span(const Span& og);
+		Span& operator=(const Span &og);
 		~Span();
 		//////////////////
 		
 		Span(unsigned int);
 		void	addNumber(int);
-		int		shortestSpan();			
+		int		shortestSpan();
 		int		longestSpan();
+
+		void	addManyNumbers(unsigned int, std::vector<int>::const_iterator, std::vector<int>::const_iterator);
 
 		class Exception_Max_N : public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return ("There are already N elements stored !!");
-				}
+				virtual const char* what() const throw();
 		};
 
 		class Exception_No_Span : public std::exception
 		{
 			public:
-				virtual const char* what() const throw()
-				{
-					return ("No span can be found. There are no numbers stored, or only one !!");
-				}
+				virtual const char* what() const throw();
 		};
 
-		unsigned int get_N();
-
-		void	display()
-		{
-			for (unsigned int i = 0 ; i < N ; i++)
-				std::cout << span[i] << std::endl;
-		}
+		void	display();
 };
