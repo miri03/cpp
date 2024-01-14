@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:58:33 by meharit           #+#    #+#             */
-/*   Updated: 2024/01/12 21:41:26 by meharit          ###   ########.fr       */
+/*   Updated: 2024/01/14 23:32:53 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <stack>
 #include <iostream>
+#include <deque>
 
 template<typename T>
 class MutantStack : public std::stack<T>
@@ -26,25 +27,50 @@ class MutantStack : public std::stack<T>
         ~MutantStack(){}
         //////////////////
 
-        // class iterator
-        // {
-        //   public:
-        //     iterator& operator=(const std::deque<T>::iterator& og)
-        //     {
-        //         (void) og;
-        //         return (NULL);    
-        //     }  
-        // };
+        typedef typename std::stack<T>::container_type::iterator iterator;
+        typedef typename std::stack<T>::container_type::const_iterator const_iterator;
+        typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
+        typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
 
-        T* begin()
+
+        iterator begin()
         {
-            if (!this->empty())
-           { T tmp = this->end();
-            std::cout << "tmp " << tmp << std::endl;}
-            else
-                std::cout << "is empty\n";
-            std::cout << "==== |" << this << " | " << " =====\n";
-            return (&(this->top()));
+            return (this->c.begin());
+        }
+
+        iterator end()
+        {
+            return (this->c.end());
+        }
+
+        const_iterator cbegin()//
+        {
+            return (this->c.cbegin());
+        }
+
+        const_iterator cend()//
+        {
+            return (this->c.cend());
+        }
+
+        reverse_iterator rbegin()
+        {
+            return (this->c.rbegin());
+        }
+
+        reverse_iterator rend()
+        {
+            return (this->c.rend());
+        }
+
+        reverse_iterator crbegin()//
+        {
+            return (this->c.crbegin());
+        }
+
+        reverse_iterator crend()
+        {
+            return (this->c.crend());//
         }
 
 };
