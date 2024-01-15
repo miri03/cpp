@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:19:03 by meharit           #+#    #+#             */
-/*   Updated: 2024/01/12 11:31:09 by meharit          ###   ########.fr       */
+/*   Updated: 2024/01/15 17:04:59 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	Span::longestSpan()
 	{
 		first = *it;
 		if (it == span.begin())
-			hold = abs(first - *(it+1)); // to set it's value to the first distance 
+			hold = abs(first - *(it+1));
 
 		for (i = it+1; i != span.end(); i++)
 		{
@@ -88,18 +88,11 @@ const char*	Span::Exception_No_Span::what() const throw()
 	return ("No span can be found. There are no numbers stored, or only one !!");
 }
 
-void	Span::display()
-{
-	for (unsigned int i = 0 ; i < span.size() ; i++)
-		std::cout << span[i] << std::endl;
-}
-
 //canonical form//
 Span::Span() : N(0){}
 
 Span::Span(const Span& og)
 {
-	std::cout << "Copy assignement called" << std::endl;
 	N = og.N;
 	addManyNumbers(span.size(), og.span.begin(), og.span.end());
 }

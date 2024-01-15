@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 19:01:09 by meharit           #+#    #+#             */
-/*   Updated: 2024/01/12 11:19:33 by meharit          ###   ########.fr       */
+/*   Updated: 2024/01/15 17:04:53 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,4 @@ class Span
 			public:
 				virtual const char* what() const throw();
 		};
-
-		void	display();
 };
