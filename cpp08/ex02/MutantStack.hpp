@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:58:33 by meharit           #+#    #+#             */
-/*   Updated: 2024/01/15 16:29:47 by meharit          ###   ########.fr       */
+/*   Updated: 2024/01/16 21:51:03 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class MutantStack : public std::stack<T>
         MutantStack(){}
         MutantStack(const MutantStack& og)
         {
-            for (size_t i = 0; i < og.size(); i++) //size() returns size_t
+            for (size_t i = 0; i < og.size(); i++)
             {
                 this->push(og.c[i]);   
             }

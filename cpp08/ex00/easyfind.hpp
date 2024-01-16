@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:08:24 by meharit           #+#    #+#             */
-/*   Updated: 2024/01/15 16:41:36 by meharit          ###   ########.fr       */
+/*   Updated: 2024/01/16 22:19:05 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class Exception_Not_Found : public std::exception
 template<typename T>
 void	easyfind(T haystack, int needle)
 {
-	if (*(std::find(haystack.begin(), haystack.end(), needle)) == needle)
+	if (std::find(haystack.begin(), haystack.end(), needle) != haystack.end())
 	{
 		std::cout << "Integer " << needle << " found." <<  std::endl;
 		return ;
