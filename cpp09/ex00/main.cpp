@@ -6,30 +6,29 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 10:17:56 by meharit           #+#    #+#             */
-/*   Updated: 2024/01/19 22:38:53 by meharit          ###   ########.fr       */
+/*   Updated: 2024/01/20 23:04:39 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-
-// is 0 valid
 
 int    check_date(std::string date)
 {
     struct tm tm;
 
     if (!strptime(date.c_str(), "%Y-%m-%d", &tm)) {
-        std::cout << "Date isn't valid" << std::endl;
+        std::cout << "Error: bad input => ";
         return 0;
     }
-    
+    /////////////////year//////////////////
     int pos = date.find('-', 0);
     std::string year = date.substr(0, pos);
     if (atoi(year.c_str()) == 0){
-        std::cout << "Date isn't valid" << std::endl;
+        std::cout << "Error: bad input => ";
         return 0;
     }
     _date = year + "-";
+    /////////////////month//////////////////
     std::string tmp = date.substr(date.find('-', pos) + 1);
     std::string month;
     for (int i = 0; tmp[i] != '-'; i++)
@@ -39,10 +38,11 @@ int    check_date(std::string date)
     if (month.length() == 1)
         month = '0' + month;
     _date += month;
+    /////////////////day//////////////////
     std::string day = date.substr(date.find('-', pos + 1) + 1);
     if (atoi(day.c_str()) > 31)
     {
-        std::cout << "Date isn't valid" << std::endl;
+        std::cout << "Error: bad input => ";
         return 0;
     }
     if (day.length() == 1)
@@ -51,64 +51,63 @@ int    check_date(std::string date)
     return 1;
 }
 
-void    check_value(std::string value)
+int    check_value(std::string value, std::string line)
 {
     ////////////////check_float////////////////
     char *tmp;
-    if (!strtof(value.c_str(), &tmp))
+    if (!strtof(value.c_str(), &tmp) && tmp == value)
     {
-        std::cout << "Error: Value is invalid1" << std::endl;
-        return;
+        std::cout << "*Error: bad input => " << line << std::endl;
+        return 0;
     }
-    if (*tmp){
-        std::cout << "Error: Value is invalid2" << std::endl;
-        return ;
+
+    if (*tmp){        
+        std::cout << "!Error: bad input => " << line << std::endl;
+        return 0;
     }
     tmp--;
     if (*tmp == '.')
     {
-        std::cout << "Error: Value is invalid3" << std::endl;
-        return;
+        std::cout << "Error: bad input => " << line << std::endl;
+        return 0;
     }
     ////////////////////////////////////////
     float val = atof(value.c_str());
     if (val > 1000)
     {
         std::cout << "Error: too large a number." << std::endl;
-        return;
+        return 0;
     }
     if (val < 0)
     {
         std::cout << "Error: not a positive number." << std::endl;
-        return ;
-    }
-    _value = val;
-}
-
-int    check_line(std::string line, int &dv_count) //no value || no date
-{
-    if (line == "date | value")
-    {
-        if (dv_count == 1)
-            std::cout << "Error: The Data file's layout is invalid" << std::endl;
-        dv_count++;
         return 0;
     }
+    _value = val;
+    return 1;
+}
+
+int    check_line(std::string line)
+{
     if (!line.empty())
     {
         /////////////date/////////////
         int pos = line.find(' ', 0);
         if (pos > 10)
         {
-            std::cout << "Error: Date isn't valid" << std::endl;  
+            std::cout << "Error: bad input => " << line << std::endl;  
             return 0;
         }
         std::string date = line.substr(0, pos);
         if (!check_date(date))
+        {
+            std::cout << line << std::endl;
             return 0;
+        }
         /////////////value/////////////
         std::string value = line.substr(line.find(' ', pos+1) + 1);
-        check_value(value);
+        if (!check_value(value, line))
+            return 0;
         return 1;
     }
     return 0;
@@ -118,10 +117,22 @@ void    bitcoin()
 {
     std::map<std::string, float>::iterator end = DataBase.end();
     std::map<std::string, float>::iterator it = DataBase.find(_date);
-    if (it == end)
-        std::cout << "opsie" << std::endl;
+    if ((DataBase.begin())->first >= _date)
+        std::cout << _date << " => " << _value << " = " << std::fixed << std::setprecision(2) << _value * (DataBase.begin())->second << std::endl;   
+    else if (it == end)
+    {
+        for (std::map<std::string, float>::iterator beg = DataBase.begin(); beg != end; beg++)
+        {
+            if (beg->first >= _date)
+            {
+                std::cout << "res " << beg->first << " | " << (beg--)->first << std::endl;
+                std::cout << _date << " => " << _value << " = " << std::fixed << std::setprecision(2) << _value * (beg--)->second << std::endl;
+                break;
+            }
+        }
+    }
     else
-        std::cout << _date << " => " << _value << " = " << _value * it->second << std::endl; 
+        std::cout << _date << " => " << _value << " = " << std::fixed << std::setprecision(2) << _value * it->second << std::endl; 
 }
 
 void    open_to_eval(char *to_eval)
@@ -136,20 +147,16 @@ void    open_to_eval(char *to_eval)
     }
     
     //read line by line and evaluate it with DB-map
-    
     std::string buff;
-    int dv_count = 0;
-    
     std::getline(ifs, buff, '\n');
     if (ifs.eof())
         throw "The Data file is empty";
-    else if (!buff.empty() && buff != "date | value")
-        throw "The Data file's layout is invalid";
-
+    if (buff != "date | value")
+        throw "Error: First line should be \"date | value\"";
     while (!ifs.eof())
     {
         std::getline(ifs, buff, '\n');
-        if (check_line(buff, dv_count))
+        if (check_line(buff))
             bitcoin();
     }
 }
