@@ -1,10 +1,10 @@
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = btc
+NAME = RPN
 
 RM = rm -rf
 
-CFILE = main.cpp BitcoinExchange.cpp \
+CFILE = main.cpp RPN.cpp \
 
 CXX = c++
 
