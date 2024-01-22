@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 14:21:14 by meharit           #+#    #+#             */
-/*   Updated: 2024/01/21 21:08:37 by meharit          ###   ########.fr       */
+/*   Updated: 2024/01/22 17:18:43 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,6 @@ void    print_stack(std::stack<int> st)
         std::cout << st.top() << std::endl;
         st.pop();
     }
-}
-
-int stack_size(std::stack<int> st)
-{
-    int size = 0;
-    while(!st.empty())
-    {
-        size++;
-        st.pop();
-    }
-    // std::cout << "stack size " << size << std::endl;
-    return (size);
 }
 
 int is_sign(char *op)
@@ -84,7 +72,7 @@ void    check_numbers(char *arg)
         }
         else if (is_token(&arg[i]))
         {
-            if (stack_size(_stack) == 1)
+            if (_stack.size() == 1)
                 throw "Error";
             int num2 = _stack.top();
             _stack.pop();
@@ -103,7 +91,6 @@ void    check_syntax(char *arg)
         if (i == 0 && is_token(&arg[i]))
             throw "token should not be first";
         if (!is_token(&arg[i]) && !isdigit(arg[i]) && arg[i] != ' ' && !is_sign(&arg[i])){
-            std::cout << i << std::endl;
             throw "RPN accepts only numbers and tokens";
         }
     }

@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 10:18:04 by meharit           #+#    #+#             */
-/*   Updated: 2024/01/21 14:08:11 by meharit          ###   ########.fr       */
+/*   Updated: 2024/01/22 16:53:18 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 extern std::map<std::string, float> DataBase;
 extern std::string _date;
-extern float _value;
+extern double _value;
 
 int     check_date(std::string date);
 int     check_value(std::string value, std::string line);

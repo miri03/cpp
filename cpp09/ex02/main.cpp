@@ -5,24 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 14:21:08 by meharit           #+#    #+#             */
-/*   Updated: 2024/01/22 17:08:12 by meharit          ###   ########.fr       */
+/*   Created: 2024/01/22 14:00:23 by meharit           #+#    #+#             */
+/*   Updated: 2024/01/22 18:15:58 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RPN.hpp"
+#include "PmergeMe.hpp"
 
-int main(int argc, char **argv) //add negative numbers
+int main(int argc, char **argv)
 {
-    if (argc == 2)
+    if (argc > 1)
     {
-        try
+        try 
         {
-            check_syntax(argv[1]);
-            if (_stack.size() == 1)
-                std::cout << _stack.top() << std::endl;
-            else
-                throw "Error";
+            pars_sequence(&argv[1], argc - 1);
+            
         }
         catch(const char* exception)
         {
@@ -30,5 +27,5 @@ int main(int argc, char **argv) //add negative numbers
         }
     }
     else
-        std::cout << "Error" << std::endl;
+        std::cout << "Error: Please insert your positive integer sequence to sort" << std::endl;
 }

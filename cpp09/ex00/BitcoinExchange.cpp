@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 10:18:01 by meharit           #+#    #+#             */
-/*   Updated: 2024/01/21 20:00:19 by meharit          ###   ########.fr       */
+/*   Updated: 2024/01/22 16:58:21 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 std::map<std::string, float> DataBase;
 std::string _date;
-float _value;
+double _value;
 
 int    check_date(std::string date)
 {
@@ -80,7 +80,7 @@ int    check_value(std::string value, std::string line)
         return 0;
     }
     ////////////////////////////////////////
-    float val = atof(value.c_str());
+    double val = atof(value.c_str());
     if (val > 1000)
     {
         std::cout << "Error: too large a number." << std::endl;
