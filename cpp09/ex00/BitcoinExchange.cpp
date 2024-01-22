@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 10:18:01 by meharit           #+#    #+#             */
-/*   Updated: 2024/01/22 16:58:21 by meharit          ###   ########.fr       */
+/*   Updated: 2024/01/22 21:51:00 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,14 @@ int    check_line(std::string line)
             return 0;
         }
         /////////////value/////////////
-        std::string value = line.substr(line.find(' ', pos+1) + 1);
+        // std::cout << "pos1 " << pos << " pos2 " << line.find(' ', pos+1) << std::endl;
+        int pos2 = line.find(' ', pos+1);
+        if (pos2 - pos != 2)
+        {
+            std::cout << "+Error: bad input => " << line << std::endl;
+            return 0;   
+        }
+        std::string value = line.substr(pos2 + 1);
         if (!check_value(value, line))
             return 0;
         return 1;
