@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:00:23 by meharit           #+#    #+#             */
-/*   Updated: 2024/01/22 18:15:58 by meharit          ###   ########.fr       */
+/*   Updated: 2024/01/23 15:08:49 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int main(int argc, char **argv)
         try 
         {
             pars_sequence(&argv[1], argc - 1);
+            ford_johnson_vector(argv, argc - 1);
             
         }
         catch(const char* exception)
@@ -29,3 +30,6 @@ int main(int argc, char **argv)
     else
         std::cout << "Error: Please insert your positive integer sequence to sort" << std::endl;
 }
+
+
+// "    4" 3 4 5 2
