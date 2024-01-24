@@ -80,6 +80,11 @@ int    check_value(std::string value, std::string line)
         return 0;
     }
     ////////////////////////////////////////
+    if (value[0] && value[0] == '-')
+    {
+        std::cout << "Error: not a positive number." << std::endl;
+        return 0;
+    }   
     double val = atof(value.c_str());
     if (val > 1000)
     {
@@ -113,7 +118,6 @@ int    check_line(std::string line)
             return 0;
         }
         /////////////value/////////////
-        // std::cout << "pos1 " << pos << " pos2 " << line.find(' ', pos+1) << std::endl;
         int pos2 = line.find(' ', pos+1);
         if (pos2 - pos != 2)
         {
@@ -133,7 +137,7 @@ void    bitcoin()
     std::map<std::string, float>::iterator end = DataBase.end();
     std::map<std::string, float>::iterator it = DataBase.find(_date);
     if ((DataBase.begin())->first >= _date)
-        std::cout << _date << " => " << _value << " = " << std::fixed << std::setprecision(2) << _value * (DataBase.begin())->second << std::endl;   
+        std::cout << "Error: bad input" << std::endl;
     else if (it == end)
     {
         for (std::map<std::string, float>::iterator beg = DataBase.begin(); beg != end; beg++)
