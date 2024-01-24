@@ -12,6 +12,8 @@
 
 #include "PmergeMe.hpp"
 
+int _size;
+
 int is_sign(char *str)
 {
     if (str[0] == '-' &&  str[1] && isdigit(str[1]))
@@ -21,10 +23,21 @@ int is_sign(char *str)
     return 0;
 }
 
+void    check_empty(char *str)
+{
+    for (int i = 0; str[i]; i++)
+    {
+        if (str[i] != ' ')
+            return ;
+    }
+    throw "Invalid sequence";
+}
+
 void    pars_sequence(char **arg, int count)
 {
     for (int i = 0; i < count; i++)
     {
+        check_empty(arg[i]);
         for (int j = 0;arg[i][j]; j++)
         {
             if (!isdigit(arg[i][j]) && !isspace(arg[i][j]) && !is_sign(&arg[i][j])) 
@@ -50,9 +63,6 @@ void    ford_johnson_vector(char **arr, int c)
     if (c % 2 != 0)             //Step 1: ‘Straggler’ Catching
         straggler = atoi(arr[c]);
 
-    std::cout << "C ====> " << c << std::endl;
-    std::cout << "straggler ====> " << straggler << std::endl;
-
     std::vector<std::pair<int,int> > vector; //Step2: Create_pairs
     for (int i = 1; i < c; i+=2)
         vector.push_back(std::make_pair(atoi(arr[i]), atoi(arr[i+1])));
@@ -62,33 +72,18 @@ void    ford_johnson_vector(char **arr, int c)
         if (vector[i].first > vector[i].second)
             swap(vector[i]);
     }
-    for (size_t i = 0; i < vector.size(); i++) //print
-    {
-       std::cout << vector[i].first << std::endl;
-       std::cout << vector[i].second << std::endl;
-       std::cout << "=================\n";
-    }
     
     for (size_t i = 0; i < vector.size(); i++) //Step4: Sort the pairs by greatest value
     {
         int index = i;
         size_t j = i+1;
-        // std::cout << "before index " << index << " i " << i << " j " << j << std::endl;
 
         for (; j < vector.size(); j++)
         {
             if (vector[j].second < vector[i].second && vector[index].second > vector[j].second)
                 index = j;
         }
-        // std::cout << "after index " << index << " i " << i << " j " << j << std::endl;
-        // std::cout << "the smallest = " << vector[index].second << " the current = " << vector[i].second << std::endl;
         std::swap(vector[index], vector[i]);
-    }
-    for (size_t i = 0; i < vector.size(); i++) //print
-    {
-       std::cout << vector[i].first << std::endl;
-       std::cout << vector[i].second << std::endl;
-       std::cout << "=================\n";
     }
     
     std::vector<int> S;
@@ -101,10 +96,8 @@ void    ford_johnson_vector(char **arr, int c)
     {
         S.insert(std::upper_bound(S.begin(), S.end(), it->first), it->first);
     }
-    for(size_t i = 0; i < S.size(); i++)
-    {
-        std::cout << S[i] << std::endl;
-    }
+    if (straggler != -1)
+        S.insert(std::upper_bound(S.begin(), S.end(), straggler), straggler);
 }
 
 void    ford_johnson_deque(char **arr, int c)
@@ -113,9 +106,6 @@ void    ford_johnson_deque(char **arr, int c)
     
     if (c % 2 != 0)             //Step 1: ‘Straggler’ Catching
         straggler = atoi(arr[c]);
-
-    std::cout << "C ====> " << c << std::endl;
-    std::cout << "straggler ====> " << straggler << std::endl;
 
     std::deque<std::pair<int,int> > deque; //Step2: Create_pairs
     for (int i = 1; i < c; i+=2)
@@ -126,33 +116,18 @@ void    ford_johnson_deque(char **arr, int c)
         if (deque[i].first > deque[i].second)
             swap(deque[i]);
     }
-    for (size_t i = 0; i < deque.size(); i++) //print
-    {
-       std::cout << deque[i].first << std::endl;
-       std::cout << deque[i].second << std::endl;
-       std::cout << "=================\n";
-    }
-    
+
     for (size_t i = 0; i < deque.size(); i++) //Step4: Sort the pairs by greatest value
     {
         int index = i;
         size_t j = i+1;
-        // std::cout << "before index " << index << " i " << i << " j " << j << std::endl;
 
         for (; j < deque.size(); j++)
         {
             if (deque[j].second < deque[i].second && deque[index].second > deque[j].second)
                 index = j;
         }
-        // std::cout << "after index " << index << " i " << i << " j " << j << std::endl;
-        // std::cout << "the smallest = " << deque[index].second << " the current = " << deque[i].second << std::endl;
         std::swap(deque[index], deque[i]);
-    }
-    for (size_t i = 0; i < deque.size(); i++) //print
-    {
-       std::cout << deque[i].first << std::endl;
-       std::cout << deque[i].second << std::endl;
-       std::cout << "=================\n";
     }
     
     std::deque<int> S;
@@ -165,8 +140,12 @@ void    ford_johnson_deque(char **arr, int c)
     {
         S.insert(std::upper_bound(S.begin(), S.end(), it->first), it->first);
     }
-    for(size_t i = 0; i < S.size(); i++)
-    {
-        std::cout << S[i] << std::endl;
-    }
+    if (straggler != -1)
+        S.insert(std::upper_bound(S.begin(), S.end(), straggler), straggler);
+    
+    std::cout << "After:    ";
+    for (size_t i = 0; i < S.size(); i++)
+        std::cout << S[i] << " ";
+    std::cout << std::endl;
+    _size = S.size();
 }

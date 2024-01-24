@@ -6,22 +6,13 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 14:21:14 by meharit           #+#    #+#             */
-/*   Updated: 2024/01/22 17:18:43 by meharit          ###   ########.fr       */
+/*   Updated: 2024/01/23 12:00:57 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
 std::stack<int> _stack;
-
-void    print_stack(std::stack<int> st)
-{
-    while(!st.empty())
-    {
-        std::cout << st.top() << std::endl;
-        st.pop();
-    }
-}
 
 int is_sign(char *op)
 {
@@ -95,5 +86,4 @@ void    check_syntax(char *arg)
         }
     }
     check_numbers(arg);
-    // print_stack(_stack);
 }

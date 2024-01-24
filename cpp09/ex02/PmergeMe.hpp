@@ -17,9 +17,13 @@
 # include <cstdlib> //atoi
 # include <utility> //pair-swap
 # include <algorithm> //upper_bound
+# include <time.h> //clock
+# include <iomanip> // setprecision
 
 # include <vector>
 # include <deque>
+
+extern int _size;
 
 void    pars_sequence(char **, int);
 void    ford_johnson_vector(char **, int);
