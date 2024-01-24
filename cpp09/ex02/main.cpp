@@ -6,7 +6,7 @@
 /*   By: meharit <meharit@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 14:00:23 by meharit           #+#    #+#             */
-/*   Updated: 2024/01/23 15:08:49 by meharit          ###   ########.fr       */
+/*   Updated: 2024/01/24 01:27:43 by meharit          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int main(int argc, char **argv)
         {
             pars_sequence(&argv[1], argc - 1);
             ford_johnson_vector(argv, argc - 1);
+            std::cout << "**************************" << std::endl;
+            ford_johnson_deque(argv, argc - 1);
             
         }
         catch(const char* exception)
