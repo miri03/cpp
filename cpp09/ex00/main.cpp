@@ -12,6 +12,8 @@
 
 #include "BitcoinExchange.hpp"
 
+//2020-02-02 , 0.5
+
 void    open_to_eval(char *to_eval)
 {
     std::ifstream ifs;
