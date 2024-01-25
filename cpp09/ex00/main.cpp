@@ -12,8 +12,6 @@
 
 #include "BitcoinExchange.hpp"
 
-//2020-02-02 , 0.5
-
 void    open_to_eval(char *to_eval)
 {
     std::ifstream ifs;
@@ -22,16 +20,15 @@ void    open_to_eval(char *to_eval)
     if (!ifs)
     {
         perror("Data Base to evaluate");
-        throw "Error while trying to open the data file to evaluate";
+        throw std::runtime_error("Error while trying to open the data file to evaluate");
     }
-    
-    //read line by line and evaluate it with DB-map
+
     std::string buff;
     std::getline(ifs, buff, '\n');
     if (ifs.eof())
-        throw "The Data file is empty";
+        throw std::runtime_error("The Data file is empty");
     if (buff != "date | value")
-        throw "Error: First line should be \"date | value\"";
+        throw std::runtime_error("Error: First line should be \"date | value\"");
     while (!ifs.eof())
     {
         std::getline(ifs, buff, '\n');
@@ -48,7 +45,7 @@ void    get_DB()
     if (!db)
     {
         perror("The DataBase");
-        throw "Error while trying to open The Data Base file";
+        throw std::runtime_error("Error while trying to open The Data Base file");
     }
     ///////////////////////////////////////////////////////////
     std::string key;
@@ -56,16 +53,13 @@ void    get_DB()
     
     std::getline(db, key, '\n');
     if (key.empty())
-        throw "The Data Base is empty";
+        throw std::runtime_error("The Data Base is empty");
     
     while (!db.eof())
     {
         std::getline(db, key, ',');
-        if (!key.empty()) //new line
-        {
-            std::getline(db, tmp_value, '\n');        
-            DataBase[key] = std::strtof(tmp_value.c_str(), NULL);
-        }        
+        std::getline(db, tmp_value, '\n');
+        DataBase[key] = atof(tmp_value.c_str());
     }
 }
 
@@ -78,9 +72,9 @@ int main(int argc, char **argv)
             get_DB();
             open_to_eval(argv[1]);
         }
-        catch(const char *exception)
+        catch(std::exception &e)
         {
-            std::cout << exception << std::endl;        
+            std::cout << e.what() << std::endl;        
         }
     }
     else

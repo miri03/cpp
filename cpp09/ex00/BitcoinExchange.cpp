@@ -12,9 +12,48 @@
 
 #include "BitcoinExchange.hpp"
 
-std::map<std::string, float> DataBase;
+std::map<std::string, double> DataBase;
 std::string _date;
 double _value;
+
+int leap_year(std::string year, std::string month, std::string day)
+{
+    if (month == "09" || month == "04" || month == "06" || month == "10")
+    {
+        if (atoi(day.c_str()) > 30)
+            return 0;
+    }
+    if (month == "02")
+    {
+        if (atoi(year.c_str()) % 4 == 0)
+        {
+            if (atoi(year.c_str()) % 100 != 0) //is leap
+            {
+                if (atoi(day.c_str()) > 29)
+                    return 0;
+            }
+            else if (atoi(year.c_str()) % 100 == 0)
+            {
+                if (atoi(year.c_str()) % 400 == 0) //is leap
+                {
+                    if (atoi(day.c_str()) > 29)
+                        return 0;
+                }
+                else if (atoi(year.c_str()) % 400 != 0) //not leap
+                {
+                    if (atoi(day.c_str()) > 28)
+                        return 0;
+                }
+            }
+        }
+        else //not leap
+        {
+            if (atoi(day.c_str()) > 28)
+                return 0;
+        }
+    }
+    return 1;
+}
 
 int    check_date(std::string date)
 {
@@ -52,9 +91,15 @@ int    check_date(std::string date)
     if (day.length() == 1)
         day = '0' + day;
     _date = _date + '-' + day;
+
+    if (!leap_year(year, month, day))
+    {
+        std::cout << "Error: invalid date => ";
+        return 0;
+    }
     return 1;
 }
-    
+
 int    check_value(std::string value, std::string line)
 {
     ////////////////check_float////////////////
@@ -111,6 +156,11 @@ int    check_line(std::string line)
             std::cout << "Error: bad input => " << line << std::endl;  
             return 0;
         }
+        if (line[pos+1] && line[pos+1] != '|')
+        {
+            std::cout << "|Error: bad input => " << line << std::endl;  
+            return 0;
+        }
         std::string date = line.substr(0, pos);
         if (!check_date(date))
         {
@@ -134,21 +184,21 @@ int    check_line(std::string line)
 
 void    bitcoin()
 {
-    std::map<std::string, float>::iterator end = DataBase.end();
-    std::map<std::string, float>::iterator it = DataBase.find(_date);
-    if ((DataBase.begin())->first >= _date)
+    std::map<std::string, double>::iterator end = DataBase.end();
+    std::map<std::string, double>::iterator it = DataBase.find(_date);
+    if ((DataBase.begin())->first > _date)
         std::cout << "Error: bad input" << std::endl;
     else if (it == end)
     {
-        for (std::map<std::string, float>::iterator beg = DataBase.begin(); beg != end; beg++)
+        for (std::map<std::string, double>::iterator beg = DataBase.begin(); beg != end; beg++)
         {
             if (beg->first >= _date)
             {
-                std::cout << _date << " => " << _value << " = " << std::fixed << std::setprecision(2) << _value * (--beg)->second << std::endl;
+                std::cout << _date << " => " << _value << " = " << std::fixed << std::setprecision(3) << _value * (--beg)->second << std::endl;
                 break;
             }
         }
     }
     else
-        std::cout << _date << " => " << _value << " = " << std::fixed << std::setprecision(2) << _value * it->second << std::endl; 
+        std::cout << _date << " => " << _value << " = " << std::fixed << std::setprecision(3) << _value * it->second << std::endl; 
 }

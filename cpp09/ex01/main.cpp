@@ -12,7 +12,7 @@
 
 #include "RPN.hpp"
 
-int main(int argc, char **argv) //add negative numbers
+int main(int argc, char **argv)
 {
     if (argc == 2)
     {
@@ -22,11 +22,11 @@ int main(int argc, char **argv) //add negative numbers
             if (_stack.size() == 1)
                 std::cout << _stack.top() << std::endl;
             else
-                throw "Error";
+                throw std::runtime_error("Error");
         }
-        catch(const char* exception)
+        catch(std::exception &e)
         {
-            std::cout << exception << std::endl;
+            std::cout << e.what() << std::endl;
         }
     }
     else

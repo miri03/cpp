@@ -24,7 +24,7 @@
 
 #include <map>
 
-extern std::map<std::string, float> DataBase;
+extern std::map<std::string, double> DataBase;
 extern std::string _date;
 extern double _value;
 

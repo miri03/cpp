@@ -42,7 +42,7 @@ int operation(int num1, int num2, char token)
     if (token == '-')
         return (num1 - num2);
     if (num2 == 0)
-        throw "Error: Division by 0";
+        throw std::runtime_error("Error: Division by 0");
    return (num1 / num2);
 }
 
@@ -53,7 +53,7 @@ void    check_numbers(char *arg)
         for (; arg[i] == ' '; i++){}
         if (!arg[i]) break;
         else if (arg[i+1] && arg[i+1] != ' ' && !is_sign(&arg[i]))
-            throw "Error";
+            throw std::runtime_error("Error");
         else if (!is_token(&arg[i]) && !is_sign(&arg[i]))
         {
             if (i > 0 && arg[i-1] == '-')
@@ -64,12 +64,11 @@ void    check_numbers(char *arg)
         else if (is_token(&arg[i]))
         {
             if (_stack.size() == 1)
-                throw "Error";
+                throw std::runtime_error("Error");
             int num2 = _stack.top();
             _stack.pop();
             int num1 = _stack.top();
             _stack.pop();
-            // std::cout << num1 << " " << num2 << std::endl;
             _stack.push(operation(num1, num2, arg[i]));
         }
     }
@@ -80,9 +79,9 @@ void    check_syntax(char *arg)
     for (int i = 0; arg[i]; i++)
     {
         if (i == 0 && is_token(&arg[i]))
-            throw "token should not be first";
+            throw std::runtime_error("token should not be first");
         if (!is_token(&arg[i]) && !isdigit(arg[i]) && arg[i] != ' ' && !is_sign(&arg[i])){
-            throw "RPN accepts only numbers and tokens";
+            throw std::runtime_error("RPN accepts only numbers and tokens");
         }
     }
     check_numbers(arg);

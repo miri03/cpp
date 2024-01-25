@@ -17,7 +17,7 @@ int _size;
 int is_sign(char *str)
 {
     if (str[0] == '-' &&  str[1] && isdigit(str[1]))
-        throw "PmergeMe doesn't accept negative numbers";
+        throw std::runtime_error("PmergeMe doesn't accept negative numbers");
     if (str[0] == '+' &&  str[1] && isdigit(str[1]))
         return 1;
     return 0;
@@ -30,7 +30,7 @@ void    check_empty(char *str)
         if (str[i] != ' ')
             return ;
     }
-    throw "Invalid sequence";
+    throw std::runtime_error("Invalid sequence");
 }
 
 void    pars_sequence(char **arg, int count)
@@ -40,14 +40,13 @@ void    pars_sequence(char **arg, int count)
         check_empty(arg[i]);
         for (int j = 0;arg[i][j]; j++)
         {
-            if (!isdigit(arg[i][j]) && !isspace(arg[i][j]) && !is_sign(&arg[i][j])) 
-                throw "PmergeMe accepts a sequence of integers to sort";
+            if (!std::isdigit(arg[i][j]) && !std::isspace(arg[i][j]) && !is_sign(&arg[i][j])) 
+                throw std::runtime_error("PmergeMe accepts a sequence of integers to sort");
         }
     }
 }
 
-template<typename T>
-void    swap(T& container)
+void    swap(std::pair<int,int>& container)
 {
     int tmp;
 
@@ -72,7 +71,7 @@ void    ford_johnson_vector(char **arr, int c)
         if (vector[i].first > vector[i].second)
             swap(vector[i]);
     }
-    
+
     for (size_t i = 0; i < vector.size(); i++) //Step4: Sort the pairs by greatest value
     {
         int index = i;
@@ -87,16 +86,16 @@ void    ford_johnson_vector(char **arr, int c)
     }
     
     std::vector<int> S;
-    for (size_t i = 0; i < vector.size(); i++)
+    for (size_t i = 0; i < vector.size(); i++) //Step5: Creating ‘S’ sequence
     {
         S.push_back(vector[i].second);
     }
     std::vector<int>::iterator up_bound;
-    for (std::vector<std::pair<int, int> >::iterator it = vector.begin(); it != vector.end(); it++)
+    for (std::vector<std::pair<int, int> >::iterator it = vector.begin(); it != vector.end(); it++) // Inserting the remaining ‘pend’ elements
     {
         S.insert(std::upper_bound(S.begin(), S.end(), it->first), it->first);
     }
-    if (straggler != -1)
+    if (straggler != -1) //Inserting the straggler
         S.insert(std::upper_bound(S.begin(), S.end(), straggler), straggler);
 }
 
@@ -131,18 +130,19 @@ void    ford_johnson_deque(char **arr, int c)
     }
     
     std::deque<int> S;
-    for (size_t i = 0; i < deque.size(); i++)
+    for (size_t i = 0; i < deque.size(); i++) //Step5: Creating ‘S’ sequence
     {
         S.push_back(deque[i].second);
     }
     std::deque<int>::iterator up_bound;
-    for (std::deque<std::pair<int, int> >::iterator it = deque.begin(); it != deque.end(); it++)
+    for (std::deque<std::pair<int, int> >::iterator it = deque.begin(); it != deque.end(); it++) // Inserting the remaining ‘pend’ elements
     {
         S.insert(std::upper_bound(S.begin(), S.end(), it->first), it->first);
     }
-    if (straggler != -1)
+    if (straggler != -1) //Inserting the straggler
         S.insert(std::upper_bound(S.begin(), S.end(), straggler), straggler);
-    
+
+////////////////////////////////////////////////////////////////////////////////////////
     std::cout << "After:    ";
     for (size_t i = 0; i < S.size(); i++)
         std::cout << S[i] << " ";
