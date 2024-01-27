@@ -67,7 +67,9 @@ void    recursive_bubble_sort(T &container, int n)
         next = (it+1);
         if ((*it).second > (*next).second)
         {
-            std::swap(*it, *next);
+            std::swap((*it).second, (*next).second);
+            if (((*it).first > (*it).second))
+                std::swap((*it).first, (*it).second);
             count++;
         }
         i++;
@@ -96,7 +98,6 @@ void    ford_johnson_vector(char **arr, int c, _time& process_time)
         if (vector[i].first > vector[i].second)
             swap(vector[i]);
     }
-
     recursive_bubble_sort(vector, vector.size()); //Step4: Sort the pairs by greatest value
 
     std::vector<int> S;
