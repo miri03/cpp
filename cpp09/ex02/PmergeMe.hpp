@@ -18,13 +18,20 @@
 # include <utility> //pair-swap
 # include <algorithm> //upper_bound
 # include <time.h> //clock
-# include <iomanip> // setprecision
 
 # include <vector>
 # include <deque>
 
-extern int _size;
+struct _time
+{
+    clock_t start_v; 
+    clock_t end_v;
 
+    clock_t start_d; 
+    clock_t end_d; 
+};
+
+void    print_process_time(size_t , _time);
 void    pars_sequence(char **, int);
-void    ford_johnson_vector(char **, int);
-void    ford_johnson_deque(char **, int);
+void    ford_johnson_vector(char **, int, _time&);
+void    ford_johnson_deque(char **, int, _time&);

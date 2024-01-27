@@ -12,8 +12,6 @@
 
 #include "PmergeMe.hpp"
 
-int _size;
-
 int is_sign(char *str)
 {
     if (str[0] == '-' &&  str[1] && isdigit(str[1]))
@@ -40,23 +38,50 @@ void    pars_sequence(char **arg, int count)
         check_empty(arg[i]);
         for (int j = 0;arg[i][j]; j++)
         {
-            if (!std::isdigit(arg[i][j]) && !std::isspace(arg[i][j]) && !is_sign(&arg[i][j])) 
-                throw std::runtime_error("PmergeMe accepts a sequence of integers to sort");
+            if (!std::isdigit(arg[i][j]) && !is_sign(&arg[i][j])) 
+                throw std::runtime_error("invalid argument list");
         }
     }
 }
 
-void    swap(std::pair<int,int>& container)
+void    swap(std::pair<int,int>& pair)
 {
     int tmp;
 
-    tmp = container.first;
-    container.first = container.second;
-    container.second = tmp;
+    tmp = pair.first;
+    pair.first = pair.second;
+    pair.second = tmp;
 }
 
-void    ford_johnson_vector(char **arr, int c)
+template<typename T>
+void    recursive_bubble_sort(T &container, int n)
 {
+    if (n == 1)
+        return;
+    int count = 0;
+    typename T::iterator it;
+    typename T::iterator next;
+    int i = 0;
+    for (it = container.begin(); i < n-1; it++)
+    {
+        next = (it+1);
+        if ((*it).second > (*next).second)
+        {
+            std::swap(*it, *next);
+            count++;
+        }
+        i++;
+    }
+    if (count == 0)
+        return;
+    recursive_bubble_sort(container, n-1);
+    
+}
+
+void    ford_johnson_vector(char **arr, int c, _time& process_time)
+{
+    process_time.start_v = clock();
+
     int straggler = -1;
     
     if (c % 2 != 0)             //Step 1: ‘Straggler’ Catching
@@ -72,19 +97,8 @@ void    ford_johnson_vector(char **arr, int c)
             swap(vector[i]);
     }
 
-    for (size_t i = 0; i < vector.size(); i++) //Step4: Sort the pairs by greatest value
-    {
-        int index = i;
-        size_t j = i+1;
+    recursive_bubble_sort(vector, vector.size()); //Step4: Sort the pairs by greatest value
 
-        for (; j < vector.size(); j++)
-        {
-            if (vector[j].second < vector[i].second && vector[index].second > vector[j].second)
-                index = j;
-        }
-        std::swap(vector[index], vector[i]);
-    }
-    
     std::vector<int> S;
     for (size_t i = 0; i < vector.size(); i++) //Step5: Creating ‘S’ sequence
     {
@@ -97,10 +111,14 @@ void    ford_johnson_vector(char **arr, int c)
     }
     if (straggler != -1) //Inserting the straggler
         S.insert(std::upper_bound(S.begin(), S.end(), straggler), straggler);
+
+    process_time.end_v = clock();
 }
 
-void    ford_johnson_deque(char **arr, int c)
+void    ford_johnson_deque(char **arr, int c, _time& process_time)
 {
+    process_time.start_d = clock();
+
     int straggler = -1;
     
     if (c % 2 != 0)             //Step 1: ‘Straggler’ Catching
@@ -110,30 +128,21 @@ void    ford_johnson_deque(char **arr, int c)
     for (int i = 1; i < c; i+=2)
         deque.push_back(std::make_pair(atoi(arr[i]), atoi(arr[i+1])));
 
-    for (size_t i = 0; i < deque.size(); i++) //Step3: Sort_each_pair
+    std::deque<std::pair<int,int> >::iterator it;
+    for (it = deque.begin(); it != deque.end(); it++) //Step3: Sort_each_pair
     {
-        if (deque[i].first > deque[i].second)
-            swap(deque[i]);
+        if ((*it).first > (*it).second)
+            swap((*it));
     }
 
-    for (size_t i = 0; i < deque.size(); i++) //Step4: Sort the pairs by greatest value
-    {
-        int index = i;
-        size_t j = i+1;
+    recursive_bubble_sort(deque, deque.size()); //Step4: Sort the pairs by greatest value
 
-        for (; j < deque.size(); j++)
-        {
-            if (deque[j].second < deque[i].second && deque[index].second > deque[j].second)
-                index = j;
-        }
-        std::swap(deque[index], deque[i]);
-    }
-    
     std::deque<int> S;
-    for (size_t i = 0; i < deque.size(); i++) //Step5: Creating ‘S’ sequence
+    for (it = deque.begin(); it != deque.end(); it++) //Step5: Creating ‘S’ sequence
     {
-        S.push_back(deque[i].second);
+        S.push_back((*it).second);
     }
+
     std::deque<int>::iterator up_bound;
     for (std::deque<std::pair<int, int> >::iterator it = deque.begin(); it != deque.end(); it++) // Inserting the remaining ‘pend’ elements
     {
@@ -142,10 +151,12 @@ void    ford_johnson_deque(char **arr, int c)
     if (straggler != -1) //Inserting the straggler
         S.insert(std::upper_bound(S.begin(), S.end(), straggler), straggler);
 
-////////////////////////////////////////////////////////////////////////////////////////
+    process_time.end_d = clock();
+
+    ///////////////////////////////////////////////////////////////////////////
     std::cout << "After:    ";
-    for (size_t i = 0; i < S.size(); i++)
-        std::cout << S[i] << " ";
+    for (std::deque<int>::iterator it = S.begin(); it != S.end(); it++)
+        std::cout << (*it) << " ";
     std::cout << std::endl;
-    _size = S.size();
+    print_process_time(S.size(), process_time);
 }

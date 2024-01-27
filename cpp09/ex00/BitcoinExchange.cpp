@@ -105,17 +105,17 @@ int    check_value(std::string value, std::string line)
     ////////////////check_float////////////////
     char *tmp;
     if (value[0] == '.'){
-        std::cout << "*Error: bad input => " << line << std::endl;
+        std::cout << "Error: bad input => " << line << std::endl;
         return 0;
     }
     if (!strtof(value.c_str(), &tmp) && tmp == value)
     {
-        std::cout << "*Error: bad input => " << line << std::endl;
+        std::cout << "Error: bad input => " << line << std::endl;
         return 0;
     }
 
     if (*tmp){        
-        std::cout << "!Error: bad input => " << line << std::endl;
+        std::cout << "Error: bad input => " << line << std::endl;
         return 0;
     }
     tmp--;
@@ -158,7 +158,7 @@ int    check_line(std::string line)
         }
         if (line[pos+1] && line[pos+1] != '|')
         {
-            std::cout << "|Error: bad input => " << line << std::endl;  
+            std::cout << "Error: bad input => " << line << std::endl;  
             return 0;
         }
         std::string date = line.substr(0, pos);
@@ -171,7 +171,7 @@ int    check_line(std::string line)
         int pos2 = line.find(' ', pos+1);
         if (pos2 - pos != 2)
         {
-            std::cout << "+Error: bad input => " << line << std::endl;
+            std::cout << "Error: bad input => " << line << std::endl;
             return 0;   
         }
         std::string value = line.substr(pos2 + 1);
@@ -186,15 +186,19 @@ void    bitcoin()
 {
     std::map<std::string, double>::iterator end = DataBase.end();
     std::map<std::string, double>::iterator it = DataBase.find(_date);
-    if ((DataBase.begin())->first > _date)
-        std::cout << "Error: bad input" << std::endl;
+
+    if (_date < (DataBase.begin())->first)
+        std::cout << "Error: bad input => " << _date << std::endl;
+
+    else if (_date > (--DataBase.end())->first)
+        std::cout << _date << " => " << _value << " = " << std::fixed << std::setprecision(3) << _value * (--DataBase.end())->second << std::endl;
     else if (it == end)
     {
-        for (std::map<std::string, double>::iterator beg = DataBase.begin(); beg != end; beg++)
+        for (std::map<std::string, double>::iterator map = DataBase.begin(); map != end; map++)
         {
-            if (beg->first >= _date)
+            if (_date <= map->first)
             {
-                std::cout << _date << " => " << _value << " = " << std::fixed << std::setprecision(3) << _value * (--beg)->second << std::endl;
+                std::cout << _date << " => " << _value << " = " << std::fixed << std::setprecision(3) << _value * (--map)->second << std::endl;
                 break;
             }
         }

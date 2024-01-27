@@ -52,14 +52,15 @@ void    get_DB()
     std::string tmp_value;
     
     std::getline(db, key, '\n');
-    if (key.empty())
-        throw std::runtime_error("The Data Base is empty");
-    
     while (!db.eof())
     {
         std::getline(db, key, ',');
-        std::getline(db, tmp_value, '\n');
-        DataBase[key] = atof(tmp_value.c_str());
+
+        if (!key.empty())
+        {
+            std::getline(db, tmp_value, '\n');
+            DataBase.insert(std::make_pair(key, atof(tmp_value.c_str())));
+        }
     }
 }
 
